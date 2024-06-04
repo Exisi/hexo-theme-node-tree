@@ -7,9 +7,6 @@ github: Exisi
 
 favicon: /favicon.ico
 
-theme_config:
-  _config.node-tree.yml
-
 menu:
   tag:
     enable: true
