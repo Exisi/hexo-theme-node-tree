@@ -106,3 +106,5 @@ _posts
     ├── bar.md
     └── foo.md        # the same name Markdown file inside the foo directory
 ```
+
+In addition, the node of the directory will be sorted in order, so it is important to set a time for the post.
