@@ -1,0 +1,108 @@
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<div id="tree">
+			<%
+				<!-- 将路径转换成 tree 目录结构 -->
+				const pathToTree = (input) => {
+					var output = [];
+					input.forEach(function(post){
+						<!-- 用来分割去掉时间的路径 -->
+						var chain = post.slug.split("/");
+						var currentNode = output;
+						for (var j = 0; j < chain.length; j++) {
+							if (chain[j] === '') {
+								break;
+							}
+							var wantedNode = chain[j];
+							var lastNode = currentNode;
+
+							for (var k = 0; k < currentNode.length; k++) {
+								if (currentNode[k].title == wantedNode) {
+									currentNode = currentNode[k].children;
+									break;
+								}
+							}
+
+							if (lastNode == currentNode) {
+								var newNode = currentNode[k] = { post: post, title: wantedNode, children: [] };
+								currentNode = newNode.children;
+							} else {
+								delete currentNode.children
+							}
+						}
+					});
+					return output;
+				}
+			%>
+			<%
+				<!-- 递归输出侧边栏目录 tree -->
+				const showTree = (input) => {
+
+					<!-- 按照日期排序 -->
+					input.sort(function(a, b){
+						let date ={
+							a:new Date(a.post.date),
+							b:new Date(b.post.date),
+						}
+						return (date.a - date.b);
+					});
+
+					<!-- 循环输出 html 结构 -->
+					input.forEach(function(node) {
+						if ( node.children == 0 ) {
+							let link_title = node.post.path.split('/').slice(3,-1).join("/");
+			%>
+							<ul>
+								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
+									<a href="<%- url_for(node.post.path) %><%-  %>" title="<%-link_title %>">
+									<% if (theme.sidebar && theme.sidebar.usePostTitle) { %>
+										<%- node.post.title || node.title %>
+									<% } else { %>
+										<%- node.title %>
+									<% } %>
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			<%
+						} else {
+							let parent;
+							let childrens = [];
+							node.children.forEach(child => {
+								let path = child.post.path.slice(0,-1);
+								let title = path.split("/").slice(-1)[0];
+
+								if(node.title != title) {
+									childrens.push(child);
+								}else{
+									parent = child;
+								}
+							});
+			%>
+
+			<%
+							let page_title = page.path.slice(0,-1).split("/").slice(-1)[0];
+							let link_title = parent.post.path.split("/").slice(3,-1).join("/");
+			%>
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										<a class="directory <%- (node.title == page_title) ? 'active' : '' %>" href="/<%- parent.post.path %>" title="<%- link_title%>">
+											<%- node.title %>
+										</a>
+									</a>
+									<%- showTree(childrens) %>
+								</li>
+							</ul>
+			<%
+						}
+					});
+				}
+				showTree(pathToTree(site.posts))
+			%>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<header id="header">
+	<a id="title" href="<%= url_for() %>" class="log<div class=""></div>
+		<img id="logo" src="<%= url_for() %>favicon-white.ico" alt="logo"/>
+		<%- config.title %>
+	</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">关于</a>
+		</li>
+		<% if (theme.menu.tag.enable){ %>
+		<li class="menu-item">
+			<a href="/tags" class="menu-item-link">标签</a>
+		</li>
+		<% } %> <% if (theme.menu.category.enable){ %>
+		<li class="menu-item">
+			<a href="/categories" class="menu-item-link">分类</a>
+		</li>
+		<% } %>
+		<li class="menu-item">
+			<a href="https://github.com/<%= theme.github %>" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+		<li class="menu-item dark-mode">
+			<a href="#" class="menu-item-link">
+				<i class="fa fa-moon-o fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
