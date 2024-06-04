@@ -12,7 +12,6 @@ $(document).ready(function () {
 	switchDarkMode();
 });
 
-// 页面滚动
 function pageScroll() {
 	let start_hight = 0;
 	$(window).on("scroll", function () {
@@ -30,14 +29,13 @@ function pageScroll() {
 	});
 }
 
-// 回到顶部
 function scrollToTop() {
 	$("#totop-toggle").on("click", function (e) {
 		$("html").animate({ scrollTop: 0 }, 200);
 	});
 }
 
-// 侧面目录
+// sidebar toggle
 function switchTreeOrIndex() {
 	$("#sidebar-toggle").on("click", function () {
 		if ($("#sidebar").hasClass("on")) {
@@ -62,7 +60,7 @@ function switchTreeOrIndex() {
 	scrollOff();
 }
 
-//生成文章目录
+//Generate articles catalog
 function showArticleIndex() {
 	$(".article-toc").empty();
 	$(".article-toc").hide();
@@ -113,15 +111,15 @@ function showArticleIndex() {
 	$(".article-toc.active-toc").append(content);
 
 	if (null != $(".article-toc a") && 0 != $(".article-toc a").length) {
-		// 点击目录索引链接，动画跳转过去，不是默认闪现过去
+		// Add toc events
 		$(".article-toc a").on("click", function (e) {
 			e.preventDefault();
-			// 获取当前点击的 a 标签，并前触发滚动动画往对应的位置
+			// Trigger scroll animation to move to the corresponding position
 			let target = $(this.hash);
 			$("body, html").animate({ scrollTop: target.offset().top }, 500);
 		});
 
-		// 监听浏览器滚动条，当浏览过的标签，给他上色。
+		// Hightlight the browsed toc title
 		$(window).on("scroll", function (e) {
 			let anchorList = $(".anchor");
 			anchorList.each(function () {
@@ -152,9 +150,9 @@ function pjaxLoad() {
 			$("pre code").each(function (i, block) {
 				hljs.highlightBlock(block);
 			});
-			// 添加 active
+			// Add active class
 			$("#tree .active").removeClass("active");
-			//根据链接路径匹配标题路径
+			// Match the title path according to the link path
 			let full_title = decodeURI(window.location.pathname).slice(1, -1).split("/");
 			full_title.splice(0, 3);
 			let title = full_title.join("/");
@@ -186,9 +184,9 @@ function pjaxLoad() {
 	});
 }
 
-// 搜索框输入事件
+//search input event
 function serachTree() {
-	// 解决搜索大小写问题
+	// Case-insensitive
 	jQuery.expr[":"].contains = function (a, i, m) {
 		return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 	};
@@ -196,10 +194,9 @@ function serachTree() {
 	$("#search-input").on("input", function (e) {
 		e.preventDefault();
 
-		// 获取 inpiut 输入框的内容
 		let inputContent = e.currentTarget.value;
 
-		// 没值就收起父目录，但是得把 active 的父目录都展开
+		// Collapse the parent directory when not searching, but do not collapse the parent directory of the ‘active’ node.
 		if (inputContent.length === 0) {
 			$(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
 			$("#tree ul").css("display", "none");
@@ -208,7 +205,7 @@ function serachTree() {
 			}
 			return $("#tree").children().css("display", "block");
 		}
-		// 有值就搜索，并且展开父目录
+		// When searching, expand the parent directory
 		$(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
 		$("#tree ul").css("display", "none");
 		let searchResult = $("#tree li").find("a:contains('" + inputContent + "')");
@@ -228,21 +225,20 @@ function serachTree() {
 	});
 }
 
-// 点击目录事件
+// Click events for node directory
 function clickTreeDirectory() {
-	// 判断有 active 的话，就递归循环把它的父目录打开
+	// If the node has the ‘.active’ class, it will recursively open its parent directory.
 	let treeActive = $("#tree .active");
 	if (treeActive.length) {
 		showActiveTree(treeActive, true);
 	}
 
-	// 点击目录，就触发折叠动画效果
 	$(document).on("click", "#tree a", function (e) {
 		showActiveChildren($(this));
 	});
 }
 
-// 展开子节点
+// Expand the sub-node
 function showActiveChildren(node) {
 	let icon = node.parent().find(".fa").first();
 	let iconIsOpen = icon.hasClass("fa-minus-square-o");
@@ -264,7 +260,7 @@ function showActiveChildren(node) {
 	icon.addClass("fa-minus-square-o");
 }
 
-// 循环递归展开父节点
+// Expand the activated parent node
 function showActiveTree(jqNode, isSiblings) {
 	if (jqNode.attr("id") === "tree") {
 		return;
@@ -272,9 +268,7 @@ function showActiveTree(jqNode, isSiblings) {
 	if (jqNode.is("ul")) {
 		jqNode.css("display", "block");
 
-		// 这个 isSiblings 是给搜索用的
-		// true 就显示开同级兄弟节点
-		// false 就是给搜索用的，值需要展示它自己就好了，不展示兄弟节点
+		//isSiblings controls whether to display sibling nodes, set to true to display, false to only show the current node
 		if (isSiblings) {
 			jqNode.siblings().css("display", "block");
 			jqNode.siblings("a").css("display", "inline");
@@ -291,7 +285,7 @@ function showActiveTree(jqNode, isSiblings) {
 	});
 
 	if (jqNode.is("a")) {
-		//界面初次加载，展开子节点
+		//When the interface is loaded for the first time, the sub -node is expanded
 		showActiveChildren(jqNode);
 	}
 }
