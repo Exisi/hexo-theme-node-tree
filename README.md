@@ -4,8 +4,8 @@
 
 <p>Node-Tree is a simple node tree directory theme, focus on notes record</p>
 
-Demo: [MagicBook](https://m.exi.ink)
-Docs: English | [Chinese](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README-CN.md)
+<p>Demo: [MagicBook](https://m.exi.ink)</p>
+<p>Docs: English | [Chinese](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README-CN.md)</p>
 
 </div>
 
