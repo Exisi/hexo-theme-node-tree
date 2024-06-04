@@ -1,45 +1,45 @@
 <div align=center>
-  <img style="text-align:center" src=https://raw.githubusercontent.com/Exisi/MagicBook/main/favicon.ico width=15% />
+  <img style="text-align:center" src="https://raw.githubusercontent.com/Exisi/hexo-theme-node-tree/main/source/favicon.ico" width=15% />
   <h1>Node-Tree</h1>
 
-<p>Node-Tree is a simple node tree directory theme, focus on notes record</p>
+<p>节点树是一个简单的节点树目录主题，专注于笔记记录</p>
 
 Demo: [MagicBook](https://m.exi.ink)
-Docs: English | [Chinese](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README-CN.md)
+Docs: [English](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README.md) | Chinese
 
 </div>
 
-Based on [tree](https://github.com/wujun234/hexo-theme-tree) theme.
+基于 [tree](https://github.com/wujun234/hexo-theme-tree) 主题.
 
-### Installation
+### 安装
 
 ```
 $ cd hexo
 $ git clone https://github.com/Exisi/hexo-theme-node-tree themes/node-tree
 ```
 
-Or you can download the [latest Release]() manually, and then put it in theme directory
+或着您可以手动下载主题的[最新发行版]()，并将它放到主题目录
 
-Set the `_config.yml` theme
+接着，设置 `_config.yml` 中的主题为 node-tree
 
 ```
 theme: node-tree
 ```
 
-### Update
+### 更新
 
-You can update to latest master branch by the following command
+您可以通过以下命令将主题更新到最新的主分支
 
 ```
 $ cd themes/node-tree
 $ git pull
 ```
 
-### Configuration
+### 配置
 
-By default, the theme is default configuration for some configurations. If you need to customize the configuration, it is recommended to use `_config.node-tree.yml` to cover theme configuration. See Hexo configration [Alternate Theme Config](https://hexo.io/docs/configuration.html#Alternate-Theme-Config)
+默认情况下，主题对一些配置默认配置，如果需要自定义配置，建议使用`_config.node-tree.yml`覆盖主题配置。 参考 Hexo 配置中的[使用代替主题配置文件](https://hexo.io/zh-cn/docs/configuration.html#%E4%BD%BF%E7%94%A8%E4%BB%A3%E6%9B%BF%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
 
-Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration.
+然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。
 
 ```
 favicon: /favicon.ico
