@@ -40,6 +40,8 @@ $ git pull
 
 By default, the theme is default configuration for some configurations. If you need to customize the configuration, it is recommended to use `_config.node-tree.yml` to cover theme configuration. See Hexo configration [Alternate Theme Config](https://hexo.io/docs/configuration.html#Alternate-Theme-Config)
 
+#### Theme configuration
+
 Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration.
 
 ```
@@ -92,4 +94,15 @@ statistics:
   busuanzi:
     # Specify to open busuanzi statistics
     enable: true
+```
+
+#### Node Tree Rules
+
+In order to link the contents of the directory, you need to create the Markdown file of the same name in the file directory.
+
+```
+_posts
+└── foo/              # Create a new nested directory
+    ├── bar.md
+    └── foo.md        # the same name Markdown file inside the foo directory
 ```

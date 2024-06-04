@@ -40,6 +40,8 @@ $ git pull
 
 默认情况下，主题对一些配置默认配置，如果需要自定义配置，建议使用`_config.node-tree.yml`覆盖主题配置。 参考 Hexo 配置中的[使用代替主题配置文件](https://hexo.io/zh-cn/docs/configuration.html#%E4%BD%BF%E7%94%A8%E4%BB%A3%E6%9B%BF%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
 
+#### 主题配置
+
 然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。
 
 ```
@@ -92,4 +94,15 @@ statistics:
   busuanzi:
     # Specify to open busuanzi statistics
     enable: true
+```
+
+#### 节点树规则
+
+为了链接目录的内容，您需要在文件目录中创建同名的 `Markdown` 文件
+
+```
+_posts
+└── foo/              # 创建一个嵌套目录
+    ├── bar.md
+    └── foo.md        # 创建与父目录同名的 Markdown 放在其内部
 ```
