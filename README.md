@@ -19,7 +19,7 @@ $ cd hexo
 $ git clone https://github.com/Exisi/hexo-theme-node-tree themes/node-tree
 ```
 
-Or you can download the [latest Release]() manually, and then put it in theme directory
+Or you can download the [latest Release](https://github.com/Exisi/hexo-theme-node-tree/releases) manually, and then put it in theme directory
 
 Set the `_config.yml` theme
 

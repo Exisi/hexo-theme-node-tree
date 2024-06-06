@@ -19,7 +19,7 @@ $ cd hexo
 $ git clone https://github.com/Exisi/hexo-theme-node-tree themes/node-tree
 ```
 
-或着您可以手动下载主题的[最新发行版]()，并将它放到主题目录
+或着您可以手动下载主题的[最新发行版](https://github.com/Exisi/hexo-theme-node-tree/releases)，并将它放到主题目录
 
 接着，设置 `_config.yml` 中的主题为 node-tree
 
