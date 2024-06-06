@@ -285,7 +285,7 @@ ul li a {
 	transition: all 0.2s;
 }
 /* article */
-#article-title {
+#article-title:not(h2) {
 	border-bottom: 2px solid #ddd;
 }
 #article-content {
