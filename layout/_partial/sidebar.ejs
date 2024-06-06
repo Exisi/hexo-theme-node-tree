@@ -1,14 +1,23 @@
+<%
+	const placeholder = {
+		 en: "Press Enter to search content",
+		 zh: "按回车全站搜索",
+	};
+
+	const language = site.language ? site.language : "en";
+%>
+
 <div id="sidebar">
 	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
 	<div id="site-toc">
-		<input id="search-input" class="search-input" type="search" placeholder="按回车全站搜索">
+		<input id="search-input" class="search-input" type="search" placeholder="<%= placeholder[language] %>">
 		<div id="tree">
 			<%
-				<!-- 将路径转换成 tree 目录结构 -->
+				<!-- Convert the posts file path into a tree shaped directory structure -->
 				const pathToTree = (input) => {
 					var output = [];
 					input.forEach(function(post){
-						<!-- 用来分割去掉时间的路径 -->
+						<!-- Only retain the directory and post title, not include time and domain name prefix -->
 						var chain = post.slug.split("/");
 						var currentNode = output;
 						for (var j = 0; j < chain.length; j++) {
@@ -37,10 +46,10 @@
 				}
 			%>
 			<%
-				<!-- 递归输出侧边栏目录 tree -->
+				<!-- Recursively display the directory on the sidebar -->
 				const showTree = (input) => {
 
-					<!-- 按照日期排序 -->
+					<!-- Sort by date in ASC order -->
 					input.sort(function(a, b){
 						let date ={
 							a:new Date(a.post.date),
@@ -49,7 +58,7 @@
 						return (date.a - date.b);
 					});
 
-					<!-- 循环输出 html 结构 -->
+					<!-- Output HTML structure -->
 					input.forEach(function(node) {
 						if ( node.children == 0 ) {
 							let link_title = node.post.path.split('/').slice(3,-1).join("/");

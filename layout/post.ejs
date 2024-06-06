@@ -7,8 +7,8 @@
 	<div id="article-categories">
 		<% if (page.categories) { %>
 		<span>Categories：</span>
-		<% for (var j=0; j < page.categories.data.length; j++) { %> <% if
-		(page.categories.data[j] && page.categories.data[j].name) { %>
+		<% for (var j=0; j < page.categories.data.length; j++) { %>
+		<% if (page.categories.data[j] && page.categories.data[j].name) { %>
 		<span>
 			<i class="fa fa-folder" aria-hidden="true">
 				<a href="/<%- page.categories.data[j].path %>">
@@ -17,10 +17,13 @@
 			</i>
 			<% if (j < page.categories.data.length - 1) { %> > <% } %>
 		</span>
-		<% } %> <% } %> <% } %> <% if (page.tags) { %>
+		<% } %>
+		<% } %>
+		<% } %>
+		<% if (page.tags) { %>
 		<span>Tags：</span>
-		<% for (var j=0; j < page.tags.data.length; j++) { %> <% if
-		(page.tags.data[j] && page.tags.data[j].name) { %>
+		<% for (var j=0; j < page.tags.data.length; j++) { %> 
+		<% if (page.tags.data[j] && page.tags.data[j].name) { %>
 		<span>
 			<i class="fa fa-tag" aria-hidden="true">
 				<a href="/<%- page.tags.data[j].path %>">
@@ -28,7 +31,9 @@
 				</a>
 			</i>
 		</span>
-		<% } %> <% } %> <% } %>
+		<% } %>
+		<% } %>
+		<% } %>
 	</div>
 </div>
 
@@ -37,7 +42,7 @@
 <!-- post-guide -->
 
 <% if (is_post()){
-let posts = site.posts;
+	let posts = site.posts;
 
     let prev,next  = null;
     let current = page.title || page.slug.split("/")[page.slug.split("/").length-1];
@@ -67,29 +72,26 @@ let posts = site.posts;
     			next = null;
     		}
     	}
-
-
     }
-
 %>
 
 <div class="post-guide">
-<div class="item left">
-<% if ( prev != null ) { %>
-<a href="<%- url_for(prev.path) %>">
-<i class="fa fa-angle-left" aria-hidden="true"></i>
-<%- prev.title || prev.slug.split("/")[prev.slug.split("/").length-1] %>
-</a>
-<% }%>
-</div>
-<div class="item right">
-<% if ( next != null ) { %>
-<a href="<%- url_for(next.path) %>">
-<%- next.slug.split("/")[next.slug.split("/").length-1] %>
-<i class="fa fa-angle-right" aria-hidden="true"></i>
-</a>
-<% }%>
-</div>
+	<div class="item left">
+	<% if ( prev != null ) { %>
+		<a href="<%- url_for(prev.path) %>">
+			<i class="fa fa-angle-left" aria-hidden="true"></i>
+			<%- prev.title || prev.slug.split("/")[prev.slug.split("/").length-1] %>
+		</a>
+	<% }%>
+	</div>
+	<div class="item right">
+		<% if ( next != null ) { %>
+		<a href="<%- url_for(next.path) %>">
+			<%- next.slug.split("/")[next.slug.split("/").length-1] %>
+			<i class="fa fa-angle-right" aria-hidden="true"></i>
+		</a>
+		<% }%>
+	</div>
 </div>
 <% } %>
 

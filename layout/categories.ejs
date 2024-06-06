@@ -1,8 +1,23 @@
+<%
+	const category = {
+		 en: {
+            title: "Category",
+            subtitle: `There is currently a total of ${ site.categories.data.length } ${ site.categories.data.length > 1 ? "categories" : "category" }`,
+         },
+		 zh: {
+            title: "分类",
+            subtitle: `目前共计 ${ site.categories.data.length } 个分类`,
+         },
+	};
+
+	const language = site.language ? site.language : "en";
+%>
+
 <h1 id="article-title">
-	<i class="fa fa-folder-open" aria-hidden="true"></i>分类
+	<i class="fa fa-folder-open" aria-hidden="true"></i><%- category[language].title %>
 </h1>
 <h2 id="article-title">
-	目前共计 <%- site.categories.data.length %> 个分类
+	<%- category[language].subtitle %>
 </h2>
 
 <div id="article-content">
