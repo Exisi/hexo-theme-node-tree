@@ -6,7 +6,7 @@
 
 Demo: [MagicBook](https://m.exi.ink)
 
-Docs: English | [Chinese](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README-CN.md)
+Docs: English | [中文](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README-CN.md)
 
 </div>
 
