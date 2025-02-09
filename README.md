@@ -45,7 +45,9 @@ By default, the theme is default configuration for some configurations. If you n
 Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration.
 
 ```
-favicon: /favicon.ico
+favicon:
+  light: /favicon-white.ico
+  dark: /favicon.ico
 
 # Specify github user for header（username）
 github:

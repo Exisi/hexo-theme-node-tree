@@ -45,7 +45,9 @@ $ git pull
 然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。
 
 ```
-favicon: /favicon.ico
+favicon:
+  light: /favicon-white.ico
+  dark: /favicon.ico
 
 # Specify github user for header（username）
 github:
