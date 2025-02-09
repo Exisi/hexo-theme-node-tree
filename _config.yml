@@ -1,7 +1,9 @@
 # Node Tree Theme Configuration
 ## Source: https://github.com/Exisi/hexo-theme-node-tree
 
-favicon: /favicon.ico
+favicon:
+  light: /favicon-white.ico
+  dark: /favicon.ico
 
 # Specify github user for header（username）
 github: Exisi
