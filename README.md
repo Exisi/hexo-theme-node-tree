@@ -1,5 +1,5 @@
 <div align=center>
-  <img style="text-align:center" src=https://raw.githubusercontent.com/Exisi/MagicBook/main/favicon.ico width=15% />
+  <img style="text-align:center" src="https://raw.githubusercontent.com/Exisi/hexo-theme-node-tree/main/source/favicon.ico" width="15%" />
   <h1>Node-Tree</h1>
 
 <p>Node-Tree is a simple node tree directory theme, focus on notes record</p>
