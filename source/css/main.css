@@ -229,7 +229,9 @@ ul li a {
 }
 .index-li {
 	margin: 20px 0 20px 0;
-	border-bottom: 1px solid #c6c6c6;
+	border: 1px solid #c6c6c6;
+    padding: 10px;
+    border-radius: 5px;
 }
 .index-li a {
 	color: #404040;
@@ -253,7 +255,7 @@ ul li a {
 }
 
 .index-title {
-	margin-top: 30px;
+	margin: 5px 0;
 	position: relative;
 	font-size: 18px;
 }
