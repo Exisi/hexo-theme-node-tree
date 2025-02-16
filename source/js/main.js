@@ -2,7 +2,7 @@ window.onload = function () {
 	hljs.initHighlightingOnLoad();
 	treeNodeDirClickEvent();
 	serachTree();
-	pjaxLoad();
+	pureFetchLoading();
 	activeArticleToc();
 	switchTreeOrIndex();
 	scrollToTop();
@@ -10,6 +10,7 @@ window.onload = function () {
 	wrapImageWithLightBox();
 	toggleTreeNodes();
 	switchDarkMode();
+	setupNavigation();
 };
 
 /**
@@ -65,11 +66,6 @@ function switchTreeOrIndex() {
 function serachTree() {
 	const searchInput = document.getElementById("search-input");
 
-	// Case-insensitive
-	jQuery.expr[":"].contains = function (a, i, m) {
-		return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-	};
-
 	searchInput.addEventListener("input", function (e) {
 		e.preventDefault();
 
@@ -100,7 +96,6 @@ function serachTree() {
 			ul.style.display = "none";
 		});
 
-		// let searchResult = $("#tree li").find("a:contains('" + inputContent + "')");
 		const searchResultNode = document.querySelectorAll("#tree li a");
 		const searchResult = Array.from(searchResultNode).filter((node) => {
 			return node.textContent.includes(inputContent);
@@ -577,16 +572,33 @@ function treeNodeDirClickEvent() {
 	});
 }
 
-function pjaxLoad() {
-	let pjaxOptions = {
-		fragment: "#content",
-		timeout: 8000,
-	};
-	$(document).pjax("#menu a", "#content", pjaxOptions);
-	$(document).pjax("#tree a", "#content", pjaxOptions);
-	$(document).pjax("#index a", "#content", pjaxOptions);
-	$(document).on({
-		"pjax:complete": function (e) {
+function setupNavigation() {
+	document.addEventListener("click", function (e) {
+		const target = e.target.closest("a");
+		if (target && target.matches("#menu a, #tree a, #index a")) {
+			e.preventDefault();
+			const url = target.href;
+			history.pushState(null, "", url);
+			pureFetchLoading(url);
+		}
+	});
+
+	window.addEventListener("popstate", function () {
+		pureFetchLoading();
+	});
+}
+
+function pureFetchLoading(url) {
+	url = url || location.href;
+	fetch(url)
+		.then((response) => response.text())
+		.then((html) => {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, "text/html");
+			const newContent = doc.querySelector("#content").innerHTML;
+			document.querySelector("#content").innerHTML = newContent;
+			document.title = doc.title;
+
 			document.querySelectorAll("pre code").forEach((block) => {
 				hljs.highlightBlock(block);
 			});
@@ -625,12 +637,12 @@ function pjaxLoad() {
 				}
 
 				if (!searchResult.length) {
-					searchResult = $("#tree li.directory ").find("a[title='" + title + "']");
+					searchResult = document.querySelectorAll("#tree li.directory a[title='" + title + "']");
 					searchResult[0].classList.add("active");
 				}
 				activeArticleToc();
 			}
 			wrapImageWithLightBox();
-		},
-	});
+		})
+		.catch((error) => console.error("Error loading content:", error));
 }
