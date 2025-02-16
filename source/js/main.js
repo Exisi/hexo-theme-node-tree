@@ -1,121 +1,46 @@
 window.onload = function () {
 	hljs.initHighlightingOnLoad();
-	treeNodeDirClickEvent();
-	serachTree();
-	pureFetchLoading();
-	activeArticleToc();
-	switchTreeOrIndex();
+	switchDarkMode();
+
+	wrapImageWithLightBox();
 	scrollToTop();
 	pageScroll();
-	wrapImageWithLightBox();
+
+	treeNodeDirClickEvent();
+	switchTreeOrIndex();
+	activeArticleToc();
 	toggleTreeNodes();
-	switchDarkMode();
+
+	pureFetchLoading();
 	setupNavigation();
+
+	searchTreeNode();
 };
 
 /**
- * Header scroll event.
+ * Switch dark mode.
  */
-function pageScroll() {
-	let startHeight = 0;
-	window.addEventListener("scroll", () => {
-		const { scrollY: endHeight } = window;
-		const distance = endHeight - startHeight;
-		startHeight = endHeight;
-		document.querySelector("#header").style.display = distance > 0 && endHeight > 50 ? "none" : "";
-	});
-}
+function switchDarkMode() {
+	const localModel = localStorage.getItem("darkModel");
+	const darkModel = !localModel ? 0 : localModel;
 
-/**
- * Scroll to top.
- */
-function scrollToTop() {
-	const topTopBtn = document.querySelector("#totop-toggle");
-	topTopBtn.addEventListener("click", () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	});
-}
+	const darkModeIcon = document.querySelector("#menu .dark-mode i");
 
-/**
- * sidebar icon toggle event.
- */
-function switchTreeOrIndex() {
-	const sidebarToggle = document.querySelector("#sidebar-toggle");
-	const sidebarEl = document.querySelector("#sidebar");
-
-	sidebarToggle.addEventListener("click", () => {
-		sidebarEl.classList.contains("on") ? toggleSidebar("off") : toggleSidebar("on");
-	});
-
-	document.body.addEventListener("click", (e) => {
-		if (window.matchMedia("(max-width: 1100px)").matches) {
-			const sidebarEl = document.querySelector("#sidebar");
-			if (!e.target.closest("#sidebar") && sidebarEl.classList.contains("on")) {
-				toggleSidebar("off");
-			}
-		}
-	});
-
-	if (window.matchMedia("(min-width: 1100px)").matches) {
-		return toggleSidebar("on");
+	if (darkModel == 1) {
+		darkModeIcon.classList.replace("fa-moon-o", "fa-sun-o");
+		DarkReader.enable({
+			brightness: 100,
+			contrast: 90,
+			sepia: 10,
+		});
 	}
-	toggleSidebar("off");
-}
 
-//search input event
-function serachTree() {
-	const searchInput = document.getElementById("search-input");
-
-	searchInput.addEventListener("input", function (e) {
-		e.preventDefault();
-
-		const inputContent = e.currentTarget.value;
-		const faMinusIcons = document.querySelectorAll(".fa-minus-square-o");
-		const treeUls = document.querySelectorAll("#tree ul");
-
-		if (!inputContent) {
-			const activeNode = document.querySelector("#tree .active");
-
-			faMinusIcons.forEach((icon) => {
-				icon.classList.replace("fa-minus-square-o", "fa-plus-square-o");
-			});
-			treeUls.forEach((ul) => (ul.style.display = "none"));
-
-			if (activeNode) {
-				return showActiveNodeChildren(activeNode, true);
-			}
-
-			const treeEl = document.querySelector("#tree");
-			Array.from(treeEl.children).forEach((child) => {
-				child.style.display = "block";
-			});
-			return;
-		}
-
-		treeUls.forEach((ul) => {
-			ul.style.display = "none";
-		});
-
-		const searchResultNode = document.querySelectorAll("#tree li a");
-		const searchResult = Array.from(searchResultNode).filter((node) => {
-			return node.textContent.includes(inputContent);
-		});
-
-		if (searchResult.length) {
-			searchResult.forEach((result) => {
-				showActiveNodeChildren(result.parentNode, false);
-			});
-		}
-	});
-
-	searchInput.addEventListener("keyup", (e) => {
-		e.preventDefault();
-		if (e.code === "Enter") {
-			const inputContent = e.currentTarget.value;
-			if (inputContent) {
-				window.open(searchEngine + inputContent + "%20site:" + homeHost, "_blank");
-			}
-		}
+	darkModeIcon.addEventListener("click", () => {
+		const isMoon = darkModeIcon.classList.contains("fa-moon-o");
+		darkModeIcon.classList.toggle("fa-moon-o", !isMoon);
+		darkModeIcon.classList.toggle("fa-sun-o", isMoon);
+		localStorage.setItem("darkModel", isMoon ? 1 : 0);
+		isMoon ? DarkReader.enable({ brightness: 100, contrast: 90, sepia: 10 }) : DarkReader.disable();
 	});
 }
 
@@ -237,85 +162,6 @@ function wrapImageWithLightBox() {
 }
 
 /**
- * Toggle all tree nodes.
- */
-function toggleTreeNodes() {
-	const treeUls = document.querySelectorAll("#tree > ul");
-	treeUls.forEach((treeUl) => {
-		const beforeEl = document.createElement("i");
-		beforeEl.className = "fa fa-caret-down";
-		beforeEl.setAttribute("aria-hidden", "true");
-		Object.assign(beforeEl.style, {
-			position: "absolute",
-			right: "20px",
-			cursor: "pointer",
-			color: "#454545",
-		});
-
-		beforeEl.addEventListener("mouseover", () => {
-			beforeEl.style.color = "rgb(122, 122, 122)";
-		});
-
-		beforeEl.addEventListener("mouseout", () => {
-			beforeEl.style.color = "#454545";
-		});
-
-		treeUl.prepend(beforeEl);
-
-		beforeEl.addEventListener("click", () => {
-			const branches = treeUl.querySelectorAll("a.directory i");
-
-			if (this.classList.contains("fa-caret-down")) {
-				this.classList.replace("fa-caret-down", "fa-caret-up");
-
-				Array.from(branches).forEach((branch) => {
-					if (!branch.classList.contains("fa-minus-square-o")) {
-						branch.click();
-					}
-				});
-				return;
-			}
-
-			this.classList.remove("fa-caret-up");
-			this.classList.add("fa-caret-down");
-
-			branches.forEach((branch) => {
-				if (!branch.classList.contains("fa-plus-square-o")) {
-					branch.click();
-				}
-			});
-		});
-	});
-}
-
-/**
- * Switch dark mode.
- */
-function switchDarkMode() {
-	const localModel = localStorage.getItem("darkModel");
-	const darkModel = !localModel ? 0 : localModel;
-
-	const darkModeIcon = document.querySelector("#menu .dark-mode i");
-
-	if (darkModel == 1) {
-		darkModeIcon.classList.replace("fa-moon-o", "fa-sun-o");
-		DarkReader.enable({
-			brightness: 100,
-			contrast: 90,
-			sepia: 10,
-		});
-	}
-
-	darkModeIcon.addEventListener("click", () => {
-		const isMoon = darkModeIcon.classList.contains("fa-moon-o");
-		darkModeIcon.classList.toggle("fa-moon-o", !isMoon);
-		darkModeIcon.classList.toggle("fa-sun-o", isMoon);
-		localStorage.setItem("darkModel", isMoon ? 1 : 0);
-		isMoon ? DarkReader.enable({ brightness: 100, contrast: 90, sepia: 10 }) : DarkReader.disable();
-	});
-}
-
-/**
  * Toggle sidebar to expend
  * @param {*} state Toggle status of sidebar
  */
@@ -365,6 +211,72 @@ function toggleSidebar(state) {
 		header.className = headerClass;
 		footer.className = footerClass;
 	}
+}
+
+/**
+ * Scroll to top.
+ */
+function scrollToTop() {
+	const topTopBtn = document.querySelector("#totop-toggle");
+	topTopBtn.addEventListener("click", () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	});
+}
+
+/**
+ * Header scroll event.
+ */
+function pageScroll() {
+	let startHeight = 0;
+	window.addEventListener("scroll", () => {
+		const { scrollY: endHeight } = window;
+		const distance = endHeight - startHeight;
+		startHeight = endHeight;
+		document.querySelector("#header").style.display = distance > 0 && endHeight > 50 ? "none" : "";
+	});
+}
+
+/**
+ * The click event related to the tree node,
+ * which controls the display and hiding of parent and child nodes.
+ */
+function treeNodeDirClickEvent() {
+	const clickActiveNode = document.querySelector("#tree .active");
+	if (clickActiveNode) {
+		showActiveNodeChildren(clickActiveNode, true);
+	}
+
+	document.addEventListener("click", function (e) {
+		if (e.target.matches("#tree a")) {
+			toggleActiveNodeTree(e.target);
+		}
+	});
+}
+
+/**
+ * sidebar icon toggle event.
+ */
+function switchTreeOrIndex() {
+	const sidebarToggle = document.querySelector("#sidebar-toggle");
+	const sidebarEl = document.querySelector("#sidebar");
+
+	sidebarToggle.addEventListener("click", () => {
+		sidebarEl.classList.contains("on") ? toggleSidebar("off") : toggleSidebar("on");
+	});
+
+	document.body.addEventListener("click", (e) => {
+		if (window.matchMedia("(max-width: 1100px)").matches) {
+			const sidebarEl = document.querySelector("#sidebar");
+			if (!e.target.closest("#sidebar") && sidebarEl.classList.contains("on")) {
+				toggleSidebar("off");
+			}
+		}
+	});
+
+	if (window.matchMedia("(min-width: 1100px)").matches) {
+		return toggleSidebar("on");
+	}
+	toggleSidebar("off");
 }
 
 /**
@@ -478,8 +390,60 @@ function activeArticleToc() {
 }
 
 /**
+ * Toggle all tree nodes.
+ */
+function toggleTreeNodes() {
+	const treeUls = document.querySelectorAll("#tree > ul");
+	treeUls.forEach((treeUl) => {
+		const beforeEl = document.createElement("i");
+		beforeEl.className = "fa fa-caret-down";
+		beforeEl.setAttribute("aria-hidden", "true");
+		Object.assign(beforeEl.style, {
+			position: "absolute",
+			right: "20px",
+			cursor: "pointer",
+			color: "#454545",
+		});
+
+		beforeEl.addEventListener("mouseover", () => {
+			beforeEl.style.color = "rgb(122, 122, 122)";
+		});
+
+		beforeEl.addEventListener("mouseout", () => {
+			beforeEl.style.color = "#454545";
+		});
+
+		treeUl.prepend(beforeEl);
+
+		beforeEl.addEventListener("click", () => {
+			const branches = treeUl.querySelectorAll("a.directory i");
+
+			if (this.classList.contains("fa-caret-down")) {
+				this.classList.replace("fa-caret-down", "fa-caret-up");
+
+				Array.from(branches).forEach((branch) => {
+					if (!branch.classList.contains("fa-minus-square-o")) {
+						branch.click();
+					}
+				});
+				return;
+			}
+
+			this.classList.remove("fa-caret-up");
+			this.classList.add("fa-caret-down");
+
+			branches.forEach((branch) => {
+				if (!branch.classList.contains("fa-plus-square-o")) {
+					branch.click();
+				}
+			});
+		});
+	});
+}
+
+/**
  * Toggle the current active node
- * @param {*} node active sidebar link node
+ * @param { Node } node active sidebar link node
  */
 function toggleActiveNodeTree(node) {
 	const nodeUl = node.closest("ul");
@@ -517,7 +481,7 @@ function toggleActiveNodeTree(node) {
 }
 
 /**
- *
+ * Show the sibling or child nodes of the currently active node.
  * @param {*} activeNode current active node
  * @param {*} isSiblings directory mark
  * @returns
@@ -558,36 +522,10 @@ function showActiveNodeChildren(activeNode, isSiblings) {
 	}
 }
 
-// Click events for node directory
-function treeNodeDirClickEvent() {
-	const clickActiveNode = document.querySelector("#tree .active");
-	if (clickActiveNode) {
-		showActiveNodeChildren(clickActiveNode, true);
-	}
-
-	document.addEventListener("click", function (e) {
-		if (e.target.matches("#tree a")) {
-			toggleActiveNodeTree(e.target);
-		}
-	});
-}
-
-function setupNavigation() {
-	document.addEventListener("click", function (e) {
-		const target = e.target.closest("a");
-		if (target && target.matches("#menu a, #tree a, #index a")) {
-			e.preventDefault();
-			const url = target.href;
-			history.pushState(null, "", url);
-			pureFetchLoading(url);
-		}
-	});
-
-	window.addEventListener("popstate", function () {
-		pureFetchLoading();
-	});
-}
-
+/**
+ * Page loading by fetch
+ * @param { String } url loading page url
+ */
 function pureFetchLoading(url) {
 	url = url || location.href;
 	fetch(url)
@@ -645,4 +583,93 @@ function pureFetchLoading(url) {
 			wrapImageWithLightBox();
 		})
 		.catch((error) => console.error("Error loading content:", error));
+}
+
+/**
+ * When the page is first loaded, the page loading is performed.
+ */
+function setupNavigation() {
+	document.addEventListener("click", function (e) {
+		const target = e.target.closest("a");
+		if (target && target.matches("#menu a, #tree a, #index a")) {
+			e.preventDefault();
+			const url = target.href;
+			history.pushState(null, "", url);
+			pureFetchLoading(url);
+		}
+	});
+
+	window.addEventListener("popstate", function () {
+		pureFetchLoading();
+	});
+}
+
+/**
+ * search tree node by keyword
+ */
+function searchTreeNode() {
+	const searchInput = document.getElementById("search-input");
+
+	searchInput.addEventListener("input", function (e) {
+		e.preventDefault();
+
+		const inputContent = e.currentTarget.value;
+		const faMinusIcons = document.querySelectorAll(".fa-minus-square-o");
+		const treeUls = document.querySelectorAll("#tree ul");
+
+		if (!inputContent) {
+			const activeNode = document.querySelector("#tree .active");
+
+			faMinusIcons.forEach((icon) => {
+				icon.classList.replace("fa-minus-square-o", "fa-plus-square-o");
+			});
+			treeUls.forEach((ul) => (ul.style.display = "none"));
+
+			if (activeNode) {
+				return showActiveNodeChildren(activeNode, true);
+			}
+
+			const treeEl = document.querySelector("#tree");
+			Array.from(treeEl.children).forEach((child) => {
+				child.style.display = "block";
+			});
+			return;
+		}
+
+		treeUls.forEach((ul) => {
+			ul.style.display = "none";
+		});
+
+		const searchResultNode = document.querySelectorAll("#tree li a");
+		const searchResult = Array.from(searchResultNode).filter((node) => {
+			return node.textContent.includes(inputContent);
+		});
+
+		if (searchResult.length) {
+			searchResult.forEach((result) => {
+				toggleActiveNodeTree(result);
+				showActiveNodeChildren(result.parentElement, false);
+
+				const linkTitle = result.title;
+				const liNodeList = document.querySelectorAll(
+					`#tree li.directory:has(a[title="${linkTitle}"])`
+				);
+				liNodeList.forEach((li) => {
+					console.log(li);
+					const iconEl = li.querySelector(".fa");
+					iconEl.classList.replace("fa-plus-square-o", "fa-minus-square-o");
+				});
+			});
+		}
+	});
+
+	searchInput.addEventListener("keyup", (e) => {
+		e.preventDefault();
+		if (e.code === "Enter") {
+			const inputContent = e.currentTarget.value;
+			if (inputContent) {
+				window.open(searchEngine + inputContent + "%20site:" + homeHost, "_blank");
+			}
+		}
+	});
 }
