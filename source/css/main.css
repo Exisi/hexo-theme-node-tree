@@ -69,7 +69,9 @@ a.active {
 #menu {
 	position: fixed;
 	padding-right: 20px;
+	top: 3px;
 	right: 0px;
+	display: flex;
 }
 #menu .menu-item {
 	display: inline-block;
@@ -230,8 +232,8 @@ ul li a {
 .index-li {
 	margin: 20px 0 20px 0;
 	border: 1px solid #c6c6c6;
-    padding: 10px;
-    border-radius: 5px;
+	padding: 10px;
+	border-radius: 5px;
 }
 .index-li a {
 	color: #404040;
@@ -441,5 +443,13 @@ table td {
 
 	#article-content {
 		overflow: auto;
+	}
+
+	#menu {
+		margin-right: 0;
+	}
+
+	#header #title {
+		padding: 5px;
 	}
 }
