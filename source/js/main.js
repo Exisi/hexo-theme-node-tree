@@ -7,7 +7,7 @@ window.onload = function () {
 	switchTreeOrIndex();
 	scrollToTop();
 	pageScroll();
-	wrapImageWithMagnificPopup();
+	wrapImageWithLightBox();
 	toggleTreeNodes();
 	switchDarkMode();
 };
@@ -125,33 +125,120 @@ function serachTree() {
 }
 
 /**
- * Wrap images with magnific-popup support.
+ * Wrap images with light box support.
  */
-function wrapImageWithMagnificPopup() {
+function wrapImageWithLightBox() {
 	const imageList = document.querySelectorAll("img:not(#header img)");
-	imageList.forEach((image) => {
-		const imageCaption = image.getAttribute("alt");
-		let imageWrapLink = image.parentElement;
+	const imageLinks = Array.from(imageList).map((image) => image.getAttribute("src"));
+	let currentIndex = 0;
 
-		if (!imageWrapLink || imageWrapLink.tagName.toLowerCase() !== "a") {
-			let src = image.getAttribute("src");
-			let idx = src.lastIndexOf("?");
-			if (idx != -1) {
-				src = src.substring(0, idx);
-			}
-			imageWrapLink = document.createElement("a");
-			imageWrapLink.setAttribute("href", src);
-			image.parentNode.insertBefore(imageWrapLink, image);
-			imageWrapLink.appendChild(image);
-		}
+	const lightbox = document.createElement("div");
+	lightbox.id = "lightbox";
+	Object.assign(lightbox.style, {
+		display: "none",
+		position: "fixed",
+		top: "0",
+		left: "0",
+		width: "100%",
+		height: "100%",
+		backgroundColor: "rgba(0, 0, 0, 0.8)",
+		zIndex: "1000",
+		justifyContent: "center",
+		alignItems: "center",
+		textAlign: "center",
+		overflow: "hidden",
+	});
 
-		imageWrapLink.setAttribute("data-magnific", "images");
-		if (imageCaption) {
-			imageWrapLink.setAttribute("data-caption", imageCaption);
+	const img = document.createElement("img");
+	Object.assign(img.style, {
+		maxWidth: "80%",
+		maxHeight: "80%",
+	});
+	lightbox.appendChild(img);
+
+	const createButton = (iconClass, position) => {
+		const button = document.createElement("a");
+		button.innerHTML = `<i class="${iconClass}"></i>`;
+		Object.assign(button.style, {
+			position: "absolute",
+			[position]: "10px",
+			top: "50%",
+			transform: "translateY(-50%)",
+			color: "white",
+			fontSize: "2em",
+		});
+		return button;
+	};
+
+	const prevButton = createButton("fa fa-chevron-left", "left");
+	const nextButton = createButton("fa fa-chevron-right", "right");
+
+	lightbox.appendChild(prevButton);
+	lightbox.appendChild(nextButton);
+	document.body.appendChild(lightbox);
+
+	const showImage = (index) => {
+		img.src = imageLinks[index];
+		lightbox.style.display = "flex";
+		document.body.style.overflow = "hidden";
+	};
+
+	prevButton.addEventListener("click", () => {
+		currentIndex = (currentIndex - 1 + imageLinks.length) % imageLinks.length;
+		showImage(currentIndex);
+	});
+
+	nextButton.addEventListener("click", () => {
+		currentIndex = (currentIndex + 1) % imageLinks.length;
+		showImage(currentIndex);
+	});
+
+	lightbox.addEventListener("click", (e) => {
+		const excludeTarget = [
+			img,
+			prevButton,
+			nextButton,
+			prevButton.querySelector("i"),
+			nextButton.querySelector("i"),
+		];
+		if (!excludeTarget.includes(e.target)) {
+			lightbox.style.display = "none";
 		}
 	});
 
-	$('[data-magnific="images"]').magnificPopup({ type: "image" });
+	let lastScrollTime = 0;
+	const scrollThreshold = 200;
+
+	lightbox.addEventListener("wheel", (e) => {
+		const currentTime = new Date().getTime();
+		if (currentTime - lastScrollTime < scrollThreshold) {
+			return;
+		}
+		lastScrollTime = currentTime;
+
+		e.preventDefault();
+		if (e.deltaY < 0) {
+			prevButton.click();
+			return;
+		}
+		nextButton.click();
+	});
+
+	imageList.forEach((image, index) => {
+		const imageParent = image.parentElement;
+		const imageUrl = image.getAttribute("src");
+		const imageWrapLink = document.createElement("a");
+		imageWrapLink.className = "gallery";
+		imageWrapLink.setAttribute("href", imageUrl);
+		imageWrapLink.appendChild(image);
+		imageParent.appendChild(imageWrapLink);
+
+		imageWrapLink.addEventListener("click", (e) => {
+			e.preventDefault();
+			currentIndex = index;
+			showImage(currentIndex);
+		});
+	});
 }
 
 /**
@@ -543,7 +630,7 @@ function pjaxLoad() {
 				}
 				activeArticleToc();
 			}
-			wrapImageWithMagnificPopup();
+			wrapImageWithLightBox();
 		},
 	});
 }
