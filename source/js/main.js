@@ -1,5 +1,5 @@
 window.onload = function () {
-	hljs.initHighlightingOnLoad();
+	// hljs.initHighlightingOnLoad();
 	switchDarkMode();
 
 	wrapImageWithLightBox();
@@ -12,6 +12,8 @@ window.onload = function () {
 
 	pureFetchLoading();
 	setupNavigation();
+
+	activeArticleToc();
 
 	searchTreeNode();
 };
@@ -285,107 +287,138 @@ function switchTreeOrIndex() {
  */
 function activeArticleToc() {
 	const articleTocList = document.querySelectorAll(".article-toc");
-	let activeTocList = document.querySelectorAll(".article-toc.active-toc");
-
-	articleTocList.forEach((toc) => {
-		toc.innerHTML = "";
-		toc.style.display = "none";
-	});
-	activeTocList.forEach((activeToc) => {
-		activeToc.classList.remove("active-toc");
+	articleTocList.forEach((tocNode) => {
+		tocNode.innerHTML = "";
+		tocNode.style.display = "none";
+		tocNode.classList.remove("active-toc");
 	});
 
-	const activeNode = document.querySelector("#tree .active");
-	activeNode?.nextElementSibling.classList.add("active-toc");
+	const activeLi = document.querySelector("#tree li.file.active");
+
+	if (!activeLi) {
+		return;
+	}
+
+	const activeTocNode = activeLi.parentElement.querySelector(".article-toc");
+	activeTocNode.classList.add("active-toc");
+	activeTocNode.style.display = "block";
 
 	const articleContent = document.querySelector("#article-content");
-	const labelList = articleContent?.children || [];
+	const labelNodeList = articleContent.querySelectorAll("h1, h2, h3, h4, h5, h6") || [];
 
-	let content = "<ul>";
+	const tocJson = [];
+	const stack = [];
+	labelNodeList.forEach((label) => {
+		const level = parseInt(label.tagName.slice(1), 10);
+		const title = label.id;
 
-	let max_level = 4;
-	let labelLevel = {
-		h1: 1,
-		h2: 2,
-		h3: 3,
-		h4: 4,
-	};
-	let labelMaxLevel = {
-		h1: 1 - max_level + 1,
-		h2: 2 - max_level + 1,
-		h3: 3 - max_level + 1,
-		h4: 4 - max_level + 1,
-	};
+		const tocItem = {
+			level,
+			title,
+			children: [],
+		};
 
-	for (const label of labelList) {
-		let level = labelLevel[label.tagName.toLowerCase()] || 5;
-		if (level < max_level) {
-			max_level = level;
+		while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+			stack.pop();
 		}
-	}
 
-	Array.from(labelList).forEach((label, i) => {
-		let level = labelMaxLevel[label.tagName.toLowerCase()] || 0;
-		if (level != 0) {
-			let anchor = document.createElement("span");
-			anchor.className = "anchor";
-			anchor.id = "_label" + i;
-			label.parentNode.insertBefore(anchor, label);
-			content +=
-				'<li class="level_' +
-				level +
-				'"><a href="#_label' +
-				i +
-				'"> ' +
-				label.textContent +
-				"</a></li>";
+		if (stack.length > 0) {
+			stack[stack.length - 1].children.push(tocItem);
+		} else {
+			tocJson.push(tocItem);
 		}
+		stack.push(tocItem);
 	});
 
-	content += "</ul>";
+	const generateToc = (tocJson, parentElement) => {
+		tocJson.forEach((item) => {
+			const li = document.createElement("li");
+			const a = document.createElement("a");
+			a.href = `#${item.title}`;
+			a.textContent = item.title;
+			li.appendChild(a);
 
-	articleTocList.forEach((activeToc) => {
-		activeToc.innerHTML += content;
+			if (item.children.length > 0) {
+				const ul = document.createElement("ul");
+				li.appendChild(ul);
+				generateToc(item.children, ul);
+			}
+
+			parentElement.appendChild(li);
+		});
+	};
+
+	const ul = document.createElement("ul");
+	activeTocNode.appendChild(ul);
+	generateToc(tocJson, ul);
+
+	const tocLinks = document.querySelectorAll(".article-toc a") || [];
+	tocLinks.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault();
+			const decodedHash = decodeURIComponent(link.getAttribute("href"));
+			const target = document.querySelector(decodedHash);
+			window.scrollTo({
+				top: target.offsetTop,
+				behavior: "smooth",
+			});
+		});
 	});
 
-	let tocLinks = document.querySelectorAll(".article-toc a");
-	if (tocLinks.length > 0) {
-		tocLinks.forEach((link) => {
-			link.addEventListener("click", function (e) {
-				e.preventDefault();
-				let target = document.querySelector(this.hash);
-				window.scrollTo({
-					top: target.offsetTop,
-					behavior: "smooth",
+	const anchorList = document.querySelectorAll(".headerlink");
+
+	window.addEventListener("scroll", function () {
+		const articleContent = document.querySelector("#article-content");
+		const isBottom = window.scrollY + window.innerHeight - 300 >= articleContent.scrollHeight;
+		if (isBottom) {
+			const tocLinkList = document.querySelectorAll(".article-toc a");
+			tocLinkList.forEach((tocLink) => tocLink.classList.add("read"));
+			return;
+		}
+
+		anchorList.forEach((anchor) => {
+			const tocLinkList = document.querySelectorAll(
+				`.article-toc a[href="${anchor.getAttribute("href")}"]`
+			);
+			const anchorTop = anchor.getBoundingClientRect().top + window.scrollY;
+			const windowTop = window.scrollY;
+			if (anchorTop <= windowTop + 100) {
+				tocLinkList.forEach((tocLink) => {
+					tocLink.classList.add("read");
+					tocLink.parentNode.style.color = "#c7bb9c";
 				});
+				return;
+			}
+
+			tocLinkList.forEach((tocLink) => {
+				tocLink.classList.remove("read");
+				tocLink.parentNode.style.color = "#000000";
 			});
 		});
+	});
 
-		window.addEventListener("scroll", function () {
-			let anchorList = document.querySelectorAll(".anchor");
+	const tocUlList = activeTocNode.querySelectorAll("ul");
+	tocUlList.forEach((ul) => {
+		ul.style.display = "block";
+	});
 
-			anchorList.forEach((anchor) => {
-				let tocLinkList = document.querySelectorAll(
-					'.article-toc a[href="#' + anchor.getAttribute("id") + '"]'
-				);
-
-				let anchorTop = anchor.getBoundingClientRect().top + window.scrollY;
-				let windowTop = window.scrollY;
-				if (anchorTop <= windowTop + 100) {
-					tocLinkList.forEach((tocLink) => tocLink.classList.add("read"));
-					return;
-				}
-				tocLinkList.forEach((tocLink) => tocLink.classList.remove("read"));
+	anchorList.forEach((anchor) => {
+		const tocLinkList = document.querySelectorAll(
+			`.article-toc a[href="${anchor.getAttribute("href")}"]`
+		);
+		const anchorTop = anchor.getBoundingClientRect().top + window.scrollY;
+		const windowTop = window.scrollY;
+		if (anchorTop <= windowTop + 100) {
+			tocLinkList.forEach((tocLink) => {
+				tocLink.classList.add("read");
+				tocLink.parentNode.style.color = "#c7bb9c";
 			});
-		});
-	}
+			return;
+		}
 
-	activeTocList = document.querySelectorAll(".article-toc.active-toc");
-	activeTocList.forEach((activeToc) => {
-		activeToc.style.display = "block";
-
-		activeToc.childNodes.forEach((child) => {
-			child.style.display = "block";
+		tocLinkList.forEach((tocLink) => {
+			tocLink.classList.remove("read");
+			tocLink.parentNode.style.color = "#000000";
 		});
 	});
 }

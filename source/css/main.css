@@ -428,7 +428,7 @@ table td {
 }
 
 .article-toc ul li {
-	list-style: disc !important;
+	list-style: "◇ " !important;
 }
 
 /* @media */
