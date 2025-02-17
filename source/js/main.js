@@ -47,7 +47,7 @@ function switchDarkMode() {
  * Wrap images with light box support.
  */
 function wrapImageWithLightBox() {
-	const imageList = document.querySelectorAll("img:not(#header img)");
+	const imageList = document.querySelectorAll("#article-content img:not(#header img)");
 	const imageLinks = Array.from(imageList).map((image) => image.getAttribute("src"));
 	let currentIndex = 0;
 
@@ -85,6 +85,7 @@ function wrapImageWithLightBox() {
 			transform: "translateY(-50%)",
 			color: "white",
 			fontSize: "2em",
+			cursor: "pointer",
 		});
 		return button;
 	};
@@ -122,6 +123,7 @@ function wrapImageWithLightBox() {
 		];
 		if (!excludeTarget.includes(e.target)) {
 			lightbox.style.display = "none";
+			document.body.style.overflow = "auto";
 		}
 	});
 
