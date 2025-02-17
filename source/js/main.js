@@ -8,7 +8,6 @@ window.onload = function () {
 
 	treeNodeDirClickEvent();
 	switchTreeOrIndex();
-	activeArticleToc();
 	toggleTreeNodes();
 
 	pureFetchLoading();
@@ -447,7 +446,7 @@ function toggleTreeNodes() {
  */
 function toggleActiveNodeTree(node) {
 	const nodeUl = node.closest("ul");
-	const dirIcon = node.parentNode.querySelector(".fa");
+	const dirIcon = node.querySelector(".fa");
 	const subTree = nodeUl.querySelector("li");
 
 	if (dirIcon) {
@@ -655,7 +654,6 @@ function searchTreeNode() {
 					`#tree li.directory:has(a[title="${linkTitle}"])`
 				);
 				liNodeList.forEach((li) => {
-					console.log(li);
 					const iconEl = li.querySelector(".fa");
 					iconEl.classList.replace("fa-plus-square-o", "fa-minus-square-o");
 				});

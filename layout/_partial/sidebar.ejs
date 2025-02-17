@@ -97,11 +97,9 @@
 			%>
 							<ul>
 								<li class="directory">
-									<a href="#" class="directory">
+									<a class="directory <%- (node.title == page_title) ? 'active' : '' %>" href="/<%- parent.post.path %>" title="<%- link_title%>">
 										<i class="fa fa-plus-square-o"></i>
-										<a class="directory <%- (node.title == page_title) ? 'active' : '' %>" href="/<%- parent.post.path %>" title="<%- link_title%>">
-											<%- node.title %>
-										</a>
+										<%- node.title %>
 									</a>
 									<%- showTree(childrens) %>
 								</li>
