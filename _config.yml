@@ -1,36 +1,119 @@
-# Node Tree Theme Configuration
-## Source: https://github.com/Exisi/hexo-theme-node-tree
+# ------------------------------------------------------
+# 配置指南: https://github.com/Exisi/hexo-theme-node-tree
+# 你可以从指南中获得更详细的说明
+#
+# Guide: https://github.com/Exisi/hexo-theme-node-tree
+# You can get more detailed help from the guide
+#------------------------------------------------------
 
+#---------------------------
+# 主题配置
+# Theme Configuration
+#---------------------------
+
+#------------------------------------------------------
+# 用于浏览器标签的图标
+# Icon for browser tab
+#------------------------------------------------------
 favicon:
   light: /favicon-white.ico
   dark: /favicon.ico
 
-# Specify github user for header（username）
-github: Exisi
+#------------------------------------------------------
+# 是否启用标签菜单
+# Enable tag menu
+#------------------------------------------------------
+tag:
+  enable: true
 
-menu:
-  tag:
-    enable: true
-  category:
-    enable: true
+#------------------------------------------------------
+# 是否启用分类菜单
+# Enable category menu
+#------------------------------------------------------
+category:
+  enable: true
 
+#------------------------------------------------------
+# 侧边栏配置
+# sidebar Settings
+#------------------------------------------------------
 sidebar:
   # Post title use title or filename, If not defined, default is false (filename).
+  # 文章标题使用标题或文件名，如果未定义，默认为 false（使用文件名）
   usePostTitle: false
   search:
     # If not defined, default is google. Set engines as
+    # 如果未定义，默认为 google。设置引擎为
     # https://www.baidu.com/s?wd=
     # https://www.google.com/search?q=
     engine: https://www.google.com/search?q=
 
-footer:
+#------------------------------------------------------
+# 是否启用文章版权
+# Enable the post copyright
+#------------------------------------------------------
+post:
+  # 版权声明，会显示在每篇文章的结尾
+  # Copyright, will be displayed at the end of each post
   copyright:
-    # If `author` from Hexo `_config.yml` not defined, will be used.
+    enable: true
+
+    # CreativeCommons license
+    # See: https://creativecommons.org/share-your-work/cclicenses/
+    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
+    license: 'BY'
+
+    # 显示作者
+    # Show author
     author:
-      name: Exisi
-      url:
+      enable: true
+
+    # 显示发布日期
+    # Show post date
+    post_date:
+      enable: true
+      format: "LL"
+
+    # 显示更新日期
+    # Show update date
+    update_date:
+      enable: false
+      format: "LL"
+
+#------------------------------------------------------
+# 页脚配置
+# Footer Settings
+#------------------------------------------------------
+footer:
+  # 页脚第二行文字的 HTML，建议保留链接，用于向更多人推广本主题
+  # HTML of the first line of the footer, it is recommended to keep the link to promote this theme to more people
+  content: '
+    <div>
+      Theme
+      <a href="https://github.com/Exisi/hexo-theme-node-tree"	target="_blank">Node-Tree</a>
+      Powered by
+      <a href="https://hexo.io" target="_blank">Hexo</a>
+    </div>
+  '
+
+  # 版权声明，会显示在每个界面的结尾
+  # Copyright, will be displayed at the end of each page
+  copyright:
+    enable: true
+    author:
+    url:
     baseYear: 2024
 
+  # 展示网站的 PV、UV 统计数
+  # Display website PV and UV statistics
+  statistics:
+    busuanzi:
+      enable: true
+
+#------------------------------------------------------
+# 文章评论，支持 giscus
+# Post comment, Supporting giscus
+#------------------------------------------------------
 comment:
   giscus:
     enable: false
@@ -39,6 +122,10 @@ comment:
     repoid:
     reactions:
 
+#------------------------------------------------------
+# 是否启用网站分析，支持谷歌和百度分析
+# Enable Website Analytics, Supporting Google and Baidu Analytics
+#------------------------------------------------------
 analysis:
   baidu:
     enable: false
@@ -47,8 +134,3 @@ analysis:
     enable: false
     src:
     config:
-
-statistics:
-  busuanzi:
-    # Specify to open busuanzi statistics
-    enable: true
