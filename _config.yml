@@ -20,7 +20,7 @@ favicon:
   dark: /favicon.ico
 
 #------------------------------------------------------
-# b标题菜单配置
+# 标题菜单配置
 # Header menu Settings
 #------------------------------------------------------
 header:
@@ -47,12 +47,12 @@ header:
 # sidebar Settings
 #------------------------------------------------------
 sidebar:
-  # Post title use title or filename, If not defined, default is false (filename).
   # 文章标题使用标题或文件名，如果未定义，默认为 false（使用文件名）
+  # Post title use title or filename, If not defined, default is false (filename).
   usePostTitle: false
   search:
-    # If not defined, default is google. Set engines as
     # 如果未定义，默认为 google。设置引擎为
+    # If not defined, default is google. Set engines as
     # https://www.baidu.com/s?wd=
     # https://www.google.com/search?q=
     engine: https://www.google.com/search?q=
@@ -67,6 +67,7 @@ post:
   copyright:
     enable: true
 
+    # 知识共享许可协议
     # CreativeCommons license
     # See: https://creativecommons.org/share-your-work/cclicenses/
     # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
