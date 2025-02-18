@@ -1,0 +1,10 @@
+<script>
+	let searchEngine = "<%- theme.sidebar.search.engine %>";
+	if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+		searchEngine = "https://www.google.com/search?q=";
+	}
+	let homeHost = "<%- config.url %>";
+	if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+		homeHost = window.location.host;
+	}
+</script>

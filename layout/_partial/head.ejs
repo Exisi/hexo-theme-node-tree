@@ -2,54 +2,17 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<!-- title -->
-	<%
-		let title = page.title;
-		if (title == ''){
-			title = page.slug.split("/")[page.slug.split("/").length-1];
-		}
-	%>
-	<title>
-	<% if (title){ %>
-		<%= title %>&nbsp;&nbsp;✦&nbsp;
-	<% } %>
-	<%= config.title %>
-	</title>
+	<%- partial('_partial/head/title.ejs') %>
 
 	<!-- keywords,description -->
-	<% if (page.keywords){ %>
-		<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>" />
-	<% } %>
-
-	<% if (config.keywords){ %>
-		<meta name="keywords" content="<%= config.keywords %>" />
-	<% } %>
-
-	<% if (page.description){ %>
-		<meta name="description" content="<%= page.description %>" />
-	<% } %>
-
-	<% if (config.description){ %>
-		<meta name="description" content="<%= config.description %>" />
-	<% } %>
+	<%- partial('_partial/head/meta.ejs') %>
 
 	<!-- favicon -->
 	<% if (theme.favicon.dark){ %>
-	<%- favicon_tag(theme.favicon.dark) %>
+		<%- favicon_tag(theme.favicon.dark) %>
 	<% } %>
 
-
-	<!-- search -->
-	<script>
-		let searchEngine = "<%- theme.sidebar.search.engine %>";
-		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
-			searchEngine = "https://www.google.com/search?q=";
-		}
-		let homeHost = "<%- config.url %>";
-		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
-			homeHost = window.location.host;
-		}
-	</script>
-
+	<!-- css, script -->
 	<%- css('https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css') %>
 	<%- css('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css') %>
 	<%- css('css/main.css') %>
@@ -58,29 +21,12 @@
 	<%- js('https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js') %>
 	<%- js('js/main.js') %>
 
-	<% if (theme.footer.statistics.busuanzi.enable){ %>
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	<% } %>
+	<!-- search -->
+	<%- partial('_partial/head/search.ejs') %>
 
-	<% if (theme.analysis.baidu.enable){ %>
-		<script>
-				let _hmt = _hmt || [];
-				(function () {
-					let hm = document.createElement("script");
-					hm.src = "<%- theme.analysis.baidu.src %>";
-					let s = document.getElementsByTagName("script")[0];
-					s.parentNode.insertBefore(hm, s);
-				})();
-		</script>
-	<% } %>
+	<!-- statistics -->
+	<%- partial('_partial/head/statistics.ejs') %>
 
-	<% if (theme.analysis.google.enable){ %>
-		<script async src="<%- theme.analysis.google.src %>"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-M59MXF45E4');
-		  </script>
-	<% } %>
+	<!-- analysis -->
+	<%- partial('_partial/head/analysis.ejs') %>
 </head>

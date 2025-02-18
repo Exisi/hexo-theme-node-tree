@@ -1,0 +1,12 @@
+<%
+	let title = page.title;
+	if (title == ''){
+		title = page.slug.split("/")[page.slug.split("/").length-1];
+	}
+%>
+<title>
+    <% if (title){ %>
+        <%= title %>&nbsp;&nbsp;✦&nbsp;
+    <% } %>
+    <%= config.title %>
+</title>

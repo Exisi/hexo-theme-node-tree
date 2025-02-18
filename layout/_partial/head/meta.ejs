@@ -1,0 +1,15 @@
+<% if (page.keywords){ %>
+	<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>" />
+<% } %>
+
+<% if (config.keywords){ %>
+	<meta name="keywords" content="<%= config.keywords %>" />
+<% } %>
+
+<% if (page.description){ %>
+	<meta name="description" content="<%= page.description %>" />
+<% } %>
+
+<% if (config.description){ %>
+	<meta name="description" content="<%= config.description %>" />
+<% } %>

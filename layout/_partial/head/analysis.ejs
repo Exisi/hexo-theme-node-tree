@@ -1,0 +1,21 @@
+<% if (theme.analysis.baidu.enable){ %>
+	<script>
+			let _hmt = _hmt || [];
+			(function () {
+				let hm = document.createElement("script");
+				hm.src = "<%- theme.analysis.baidu.src %>";
+				let s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+<% } %>
+
+<% if (theme.analysis.google.enable){ %>
+	<script async src="<%- theme.analysis.google.src %>"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-M59MXF45E4');
+	  </script>
+<% } %>

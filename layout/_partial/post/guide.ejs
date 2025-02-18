@@ -1,0 +1,53 @@
+<% if (is_post()){
+	let posts = site.posts;
+
+    let prev,next  = null;
+    let current = page.title || page.slug.split("/")[page.slug.split("/").length-1];
+
+    let data = [];
+
+    for(let i = 0; i < posts.length; i++) {
+    	post = posts.data[i];
+    	data.push(post);
+    }
+
+    data.sort(function(a, b){
+    	let date ={
+    		a:new Date(a.date),
+    		b:new Date(b.date),
+    	}
+    	return (date.a - date.b);
+    });
+
+    for(let i = 0; i < data.length; i++){
+    	post = data[i];
+    	let title = post.slug.split("/")[post.slug.split("/").length-1];
+    	if(title == current){
+    		prev = data[i-1];
+    		next = data[i+1];
+    		if (i == data.length-1){
+    			next = null;
+    		}
+    	}
+    }
+%>
+
+<div class="post-guide">
+	<div class="item left">
+	<% if ( prev != null ) { %>
+		<a href="<%- url_for(prev.path) %>">
+			<i class="fa fa-angle-left" aria-hidden="true"></i>
+			<%- prev.title || prev.slug.split("/")[prev.slug.split("/").length-1] %>
+		</a>
+	<% }%>
+	</div>
+	<div class="item right">
+		<% if ( next != null ) { %>
+		<a href="<%- url_for(next.path) %>">
+			<%- next.slug.split("/")[next.slug.split("/").length-1] %>
+			<i class="fa fa-angle-right" aria-hidden="true"></i>
+		</a>
+		<% }%>
+	</div>
+</div>
+<% } %>
