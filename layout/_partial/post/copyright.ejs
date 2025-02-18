@@ -1,4 +1,4 @@
-<% if (theme.post.copyright.enable && page.copyright !== false) { %>
+<% if (theme.post.copyright.enable && page.copyright !== false && page.path.indexOf("about") < 0) { %>
     <div class="copyright-box">
 		<div class="license-box">
 			<div class="license-header">
