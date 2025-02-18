@@ -291,6 +291,7 @@ ul li a {
 /* article */
 #article-title:not(h2) {
 	border-bottom: 2px solid #ddd;
+	font-size: 22px;
 }
 #article-content {
 	padding: 10px 0;
@@ -464,10 +465,9 @@ table td {
 }
 
 .license-meta {
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 25px;
 }
 
 .license-meta-item {
@@ -475,7 +475,6 @@ table td {
 	flex-direction: column;
 	gap: 5px;
 	flex: 1;
-	min-width: 150px;
 }
 
 .print-no-link {
