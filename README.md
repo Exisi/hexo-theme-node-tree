@@ -149,12 +149,12 @@ comment:
     repo-id:
     category:
     category-id:
-    theme-light:
-    theme-dark:
     mapping:
+    strict:
     reactions-enabled:
     emit-metadata:
     input-position:
+    theme:
 
 #------------------------------------------------------
 # Enable Website Analytics, Supporting Google and Baidu Analytics

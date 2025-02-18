@@ -149,12 +149,12 @@ comment:
     repo-id:
     category:
     category-id:
-    theme-light:
-    theme-dark:
     mapping:
+    strict:
     reactions-enabled:
     emit-metadata:
     input-position:
+    theme:
 
 #------------------------------------------------------
 # 是否启用网站分析，支持谷歌和百度分析
