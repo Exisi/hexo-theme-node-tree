@@ -1,0 +1,32 @@
+name: "日本語"
+
+about:
+  title: "プロフィール"
+
+tag:
+  title: "タグ"
+  postTotal: "現在の合計 %d 個のタグ"
+
+category:
+  title: "カテゴリ"
+  postTotal: "現在の合計 %d カテゴリ"
+
+footer:
+  pv: "閲覧合計数"
+  uv: "合計閲覧者数"
+
+search:
+  placeholder: "Enter キーを押してサイト全体を検索します"
+
+post:
+  copyright:
+    author: "著者"
+    posted: "作成日"
+    updated: "修正日"
+    licensed: "著作権"
+    CC: "CC - Creative Commons license"
+    BY: "BY - Attribution"
+    SA: "SA - Share-alike"
+    NC: "NC - Non-commercial"
+    ND: "ND - No derivative works"
+    ZERO: "CC0 - No Copyright"

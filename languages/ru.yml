@@ -1,0 +1,32 @@
+name: "Русский"
+
+about:
+  title: "О"
+
+tag:
+  title: "Теги"
+  postTotal: "Всего текущих тегов: %d"
+
+category:
+  title: "Categories"
+  postTotal: "Всего текущих категорий: %d"
+
+footer:
+  pv: "Просмотров"
+  uv: "Посетителей"
+
+search:
+  placeholder: "Нажмите Enter, чтобы выполнить поиск по всему сайту"
+
+post:
+  copyright:
+    author: "Автор"
+    posted: "Опубликовано на"
+    updated: "Обновлено"
+    license: "Лицензировано под"
+    CC: "CC - Creative Commons license"
+    BY: "BY - Attribution"
+    SA: "SA - Share-alike"
+    NC: "NC - Non-commercial"
+    ND: "ND - No derivative works"
+    ZERO: "CC0 - No Copyright"

@@ -1,0 +1,32 @@
+name: "Esperanto"
+
+about:
+  title: "Pri"
+
+tag:
+  title: "Etikedoj"
+  postTotal: "Nunaj %d etikedoj entute"
+
+category:
+  title: "Kategorio"
+  postTotal: "Nunaj %d kategorioj entute"
+
+footer:
+  pv: "Vidoj"
+  uv: "Visitoj"
+
+search:
+  placeholder: "Premu Enen por serĉi la tutan retejon"
+
+post:
+  copyright:
+    author: "Aŭtoro"
+    posted: "Postigita"
+    updated: "Aktualizita"
+    licensed: "Lizenta"
+    CC: "CC - Creative Commons license"
+    BY: "BY - Attribution"
+    SA: "SA - Share-alike"
+    NC: "NC - Non-commercial"
+    ND: "ND - No derivative works"
+    ZERO: "CC0 - No Copyright"

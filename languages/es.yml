@@ -1,0 +1,32 @@
+name: "Español"
+
+about:
+  title: "Acerca"
+
+tag:
+  title: "Etiquetas"
+  postTotal: "%d etiquetas actuales en total"
+
+category:
+  title: "Categorías"
+  postTotal: "%d categorías actuales en total"
+
+footer:
+  pv: "Vistas"
+  uv: "Visitantes"
+
+search:
+  placeholder: "Presione Enter para buscar en todo el sitio"
+
+post:
+  copyright:
+    author: "Autor"
+    posted: "Publicado el"
+    updated: "Actualizado el"
+    licensed: "Licencia bajo"
+    CC: "CC - Licencia Creative Commons"
+    BY: "BY - Atribución"
+    SA: "SA - Compartir igual"
+    NC: "NC - No comercial"
+    ND: "ND - Sin obras derivadas"
+    ZERO: "CC0 - Sin derechos autorales"

@@ -1,0 +1,32 @@
+name: "正體中文"
+
+about:
+  title: "關於"
+
+tag:
+  title: "標籤"
+  postTotal: "目前共計 %d 個標籤"
+
+category:
+  title: "分類"
+  postTotal: "目前共計 %d 個分類"
+
+footer:
+  pv: "總訪問量"
+  uv: "總訪客數"
+
+search:
+  placeholder: "按回車全站搜尋"
+
+post:
+  copyright:
+    author: "作者"
+    posted: "發布於"
+    updated: "更新於"
+    licensed: "許可協議"
+    CC: "CC - 知識共享許可協議"
+    BY: "BY - 署名"
+    SA: "SA - 相同方式共享"
+    NC: "NC - 非商業性使用"
+    ND: "ND - 禁止演繹"
+    ZERO: "CC0 - 無著作權"

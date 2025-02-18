@@ -1,0 +1,32 @@
+name: "Deutsch"
+
+about:
+  title: "Über"
+
+tag:
+  title: "Schlagwörter"
+  postTotal: "Gjeldende %d tagger totalt"
+
+category:
+  title: "Kategorien"
+  postTotal: "Gjeldende %d kategorier totalt"
+
+footer:
+  pv: "Alle Aufrufe"
+  uv: "Alle Besucher"
+
+search:
+  placeholder: "Trykk Enter for å søke på hele nettstedet"
+
+post:
+  copyright:
+    author: "Beitragsautor"
+    posted: "Veröffentlicht am"
+    updated: "Geändert am"
+    licensed: "Urheberrechtshinweis"
+    CC: "CC - Creative Commons license"
+    BY: "BY - Attribution"
+    SA: "SA - Share-alike"
+    NC: "NC - Non-commercial"
+    ND: "ND - No derivative works"
+    ZERO: "CC0 - No Copyright"

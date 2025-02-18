@@ -1,0 +1,32 @@
+name: "English"
+
+about:
+  title: "About"
+
+tag:
+  title: "Tags"
+  postTotal: "Current %d tags in total"
+
+category:
+  title: "Categories"
+  postTotal: "Current %d categories in total"
+
+footer:
+  pv: "Views"
+  uv: "Visitors"
+
+search:
+  placeholder: "Press Enter to search the entire site"
+
+post:
+  copyright:
+    author: "Author"
+    posted: "Posted on"
+    updated: "Updated on"
+    licensed: "Licensed under"
+    CC: "CC - Creative Commons license"
+    BY: "BY - Attribution"
+    SA: "SA - Share-alike"
+    NC: "NC - Non-commercial"
+    ND: "ND - No derivative works"
+    ZERO: "CC0 - No Copyright"
