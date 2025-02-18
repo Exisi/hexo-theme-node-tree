@@ -146,14 +146,14 @@ comment:
   giscus:
     enable: false
     repo:
-    repo-id:
+    repo_id:
     category:
-    category-id:
+    category_id:
     mapping:
     strict:
-    reactions-enabled:
-    emit-metadata:
-    input-position:
+    reactions_enabled:
+    emit_metadata:
+    input_position:
     theme:
 
 #------------------------------------------------------
