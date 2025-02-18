@@ -144,7 +144,6 @@ footer:
 comment:
   giscus:
     enable: false
-    enableComment: true
     repo:
     repoid:
     reactions:
