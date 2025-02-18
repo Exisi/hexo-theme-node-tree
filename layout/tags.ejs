@@ -1,23 +1,8 @@
-<%
-	const tag = {
-		 en: {
-            title: "TAG",
-            subtitle: `There is currently a total of ${ site.categories.data.length } ${ site.categories.data.length > 1 ? "tags" : "tag" }`,
-         },
-		 zh: {
-            title: "标签",
-            subtitle: `目前共计 ${ site.tags.data.length } 个标签`,
-         },
-	};
-
-	const language = config.language ? config.language : "en";
-%>
-
 <h1 id="article-title">
-	<i class="fa fa-tags" aria-hidden="true"></i><%- tag[language].title %>
+	<i class="fa fa-tags" aria-hidden="true"></i><%= __("tag.title") %>
 </h1>
 <h2 id="article-title">
-	<%- tag[language].subtitle %>
+	<%=  __("tag.postTotal", site.tags.data.length )%>
 </h2>
 
 <div id="article-content">

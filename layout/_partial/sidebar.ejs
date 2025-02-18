@@ -1,16 +1,7 @@
-<%
-	const placeholder = {
-		 en: "Press Enter to search content",
-		 zh: "按回车全站搜索",
-	};
-
-	const language = config.language ? config.language : "en";
-%>
-
 <div id="sidebar">
 	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
 	<div id="site-toc">
-		<input id="search-input" class="search-input" type="search" placeholder="<%= placeholder[language] %>">
+		<input id="search-input" class="search-input" type="search" placeholder="<%= __("search.placeholder") %>">
 		<div id="tree">
 			<%
 				<!-- Convert the posts file path into a tree shaped directory structure -->

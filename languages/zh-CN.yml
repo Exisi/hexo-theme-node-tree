@@ -1,0 +1,32 @@
+name: "简体中文"
+
+about:
+  title: "关于"
+
+tag:
+  title: "标签"
+  postTotal: "目前共计 %d 个标签"
+
+category:
+  title: "分类"
+  postTotal: "目前共计 %d 个分类"
+
+footer:
+  pv: "总访问量"
+  uv: "总访客数"
+
+search:
+  placeholder: "按回车全站搜索"
+
+post:
+  copyright:
+    author: "作者"
+    posted: "发布于"
+    updated: "更新于"
+    licensed: "许可协议"
+    CC: "CC - 知识共享许可协议"
+    BY: "BY - 署名"
+    SA: "SA - 相同方式共享"
+    NC: "NC - 非商业性使用"
+    ND: "ND - 禁止演绎"
+    ZERO: "CC0 - 无版权"

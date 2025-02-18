@@ -1,35 +1,27 @@
 <div id="footer">
-	<p>
-		<% if(date(Date.now(), 'YYYY') > theme.footer.copyright.baseYear){ %>
-			©<%- theme.footer.copyright.baseYear %><span>-</span><span><%- date(Date.now(), 'YYYY') %>
+	<div>
+		<% if(theme.footer.copyright.enable){ %>
+			<% if(date(Date.now(), 'YYYY') > theme.footer.copyright.baseYear){ %>
+				©<%- theme.footer.copyright.baseYear %><span>-</span><span><%- date(Date.now(), 'YYYY') %>
+			<% } %>
+			<% if(date(Date.now(), 'YYYY') <= theme.footer.copyright.baseYear){ %>
+				©<%- theme.footer.copyright.baseYear %>
+			<% } %>
+			</span>
+			<a href="<%= theme.footer.copyright.author.url %>">
+				<%= config.author %>
+			</a>
 		<% } %>
-		<% if(date(Date.now(), 'YYYY') <= theme.footer.copyright.baseYear){ %>
-			©<%- theme.footer.copyright.baseYear %>
+		<% if (theme.footer.statistics.busuanzi.enable){ %>
+			<span id="busuanzi_container_site_pv">
+				<%= __("footer.pv") %>
+				<span id="busuanzi_value_site_pv"></span>
+			</span>
+			<span id="busuanzi_container_site_uv">
+				<%= __("footer.uv") %>
+				<span id="busuanzi_value_site_uv"></span>
+			</span>
 		<% } %>
-		</span>
-		<a href="<%= theme.footer.copyright.author.url %>">
-			<%- config.author || theme.footer.copyright.author.name %>
-		</a>
-
-		<% if (theme.statistics.busuanzi.enable){ %> |
-		<span id="busuanzi_container_site_pv">
-			pv
-			<span id="busuanzi_value_site_pv"></span>
-		</span>
-		|
-		<span id="busuanzi_container_site_uv">
-			uv
-			<span id="busuanzi_value_site_uv"></span>
-		</span>
-		<% } %>
-		<br />
-		Theme
-		<a
-			href="https://github.com/Exisi/hexo-theme-node-tree"
-			target="_blank"
-			>Node-Tree</a
-		>
-		Powered by
-		<a href="https://hexo.io" target="_blank">Hexo</a>
-	</p>
+	</div>
+	<%- theme.footer.content %>
 </div>
