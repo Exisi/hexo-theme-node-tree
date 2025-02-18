@@ -45,36 +45,102 @@ $ git pull
 然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。
 
 ```
+#---------------------------
+# 主题配置
+#---------------------------
+
+#------------------------------------------------------
+# 用于浏览器标签的图标
+#------------------------------------------------------
 favicon:
   light: /favicon-white.ico
   dark: /favicon.ico
 
-# Specify github user for header（username）
-github:
-
-menu:
+#------------------------------------------------------
+# 标题菜单配置
+#------------------------------------------------------
+header:
+  # 是否启用标签菜单
   tag:
     enable: true
+  # 是否启用分类菜单
   category:
     enable: true
+  # 是否启用标签菜单
+  github:
+    enable: true
+    url: ''
+  # 是否启用黑暗模式
+  darkMode:
+    enable: true
 
+#------------------------------------------------------
+# 侧边栏配置
+#------------------------------------------------------
 sidebar:
-  # Post title use title or filename, If not defined, default is false (filename).
+  # 文章标题使用标题或文件名，如果未定义，默认为 false（使用文件名）
   usePostTitle: false
   search:
-    # If not defined, default is google. Set engines as
+    # 如果未定义，默认为 google。设置引擎为
     # https://www.baidu.com/s?wd=
     # https://www.google.com/search?q=
     engine: https://www.google.com/search?q=
 
-footer:
+#------------------------------------------------------
+# 是否启用文章版权
+#------------------------------------------------------
+post:
+  # 版权声明，会显示在每篇文章的结尾
   copyright:
-    # If `author` from Hexo `_config.yml` not defined, will be used.
+    enable: true
+
+    # 知识共享许可协议
+    # 协议相关: https://creativecommons.org/share-your-work/cclicenses/
+    # 选项: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
+    license: 'BY'
+
+    # 显示作者
     author:
-      name:
-      url:
+      enable: true
+
+    # 显示发布日期
+    post_date:
+      enable: true
+      format: "LL"
+
+    # 显示更新日期
+    update_date:
+      enable: false
+      format: "LL"
+
+#------------------------------------------------------
+# 页脚配置
+#------------------------------------------------------
+footer:
+  # 页脚第二行文字的 HTML，建议保留链接，用于向更多人推广本主题
+  content: '
+    <div>
+      Theme
+      <a href="https://github.com/Exisi/hexo-theme-node-tree"	target="_blank">Node-Tree</a>
+      Powered by
+      <a href="https://hexo.io" target="_blank">Hexo</a>
+    </div>
+  '
+
+  # 版权声明，会显示在每个界面的结尾
+  copyright:
+    enable: true
+    url: ''
     baseYear: 2024
 
+  # 展示网站的 PV、UV 统计数
+  statistics:
+    busuanzi:
+      enable: true
+
+#------------------------------------------------------
+# 文章评论，支持 giscus
+#------------------------------------------------------
 comment:
   giscus:
     enable: false
@@ -83,19 +149,17 @@ comment:
     repoid:
     reactions:
 
+#------------------------------------------------------
+# 是否启用网站分析，支持谷歌和百度分析
+#------------------------------------------------------
 analysis:
   baidu:
     enable: false
-    src:
+    src: ''
   google:
     enable: false
-    src:
-    config:
-
-statistics:
-  busuanzi:
-    # Specify to open busuanzi statistics
-    enable: true
+    src: ''
+    config: ''
 ```
 
 #### 节点树规则

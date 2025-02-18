@@ -45,19 +45,38 @@ By default, the theme is default configuration for some configurations. If you n
 Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration.
 
 ```
+#---------------------------
+# Theme Configuration
+#---------------------------
+
+#------------------------------------------------------
+# Icon for browser tab
+#------------------------------------------------------
 favicon:
   light: /favicon-white.ico
   dark: /favicon.ico
 
-# Specify github user for header（username）
-github:
-
-menu:
+#------------------------------------------------------
+# Header menu Settings
+#------------------------------------------------------
+header:
+  # Enable tag menu
   tag:
     enable: true
+  # Enable category menu
   category:
     enable: true
+  # Enable github menu
+  github:
+    enable: true
+    url: ''
+  # Enable dark model menu
+  darkMode:
+    enable: true
 
+#------------------------------------------------------
+# sidebar Settings
+#------------------------------------------------------
 sidebar:
   # Post title use title or filename, If not defined, default is false (filename).
   usePostTitle: false
@@ -67,14 +86,61 @@ sidebar:
     # https://www.google.com/search?q=
     engine: https://www.google.com/search?q=
 
-footer:
+#------------------------------------------------------
+# Enable the post copyright
+#------------------------------------------------------
+post:
+  # Copyright, will be displayed at the end of each post
   copyright:
-    # If `author` from Hexo `_config.yml` not defined, will be used.
+    enable: true
+
+    # CreativeCommons license
+    # See: https://creativecommons.org/share-your-work/cclicenses/
+    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
+    license: 'BY'
+
+    # Show author
     author:
-      name:
-      url:
+      enable: true
+
+    # Show post date
+    post_date:
+      enable: true
+      format: "LL"
+
+    # Show update date
+    update_date:
+      enable: false
+      format: "LL"
+
+#------------------------------------------------------
+# Footer Settings
+#------------------------------------------------------
+footer:
+  # HTML of the first line of the footer, it is recommended to keep the link to promote this theme to more people
+  content: '
+    <div>
+      Theme
+      <a href="https://github.com/Exisi/hexo-theme-node-tree"	target="_blank">Node-Tree</a>
+      Powered by
+      <a href="https://hexo.io" target="_blank">Hexo</a>
+    </div>
+  '
+
+  # Copyright, will be displayed at the end of each page
+  copyright:
+    enable: true
+    url: ''
     baseYear: 2024
 
+  # Display website PV and UV statistics
+  statistics:
+    busuanzi:
+      enable: true
+
+#------------------------------------------------------
+# Post comment, support giscus
+#------------------------------------------------------
 comment:
   giscus:
     enable: false
@@ -83,19 +149,17 @@ comment:
     repoid:
     reactions:
 
+#------------------------------------------------------
+# Enable Website Analytics, Supporting Google and Baidu Analytics
+#------------------------------------------------------
 analysis:
   baidu:
     enable: false
-    src:
+    src: ''
   google:
     enable: false
-    src:
-    config:
-
-statistics:
-  busuanzi:
-    # Specify to open busuanzi statistics
-    enable: true
+    src: ''
+    config: ''
 ```
 
 #### Node Tree Rules
