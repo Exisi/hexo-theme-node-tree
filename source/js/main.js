@@ -514,8 +514,9 @@ function pureFetchLoading(url) {
 		.then((html) => {
 			const parser = new DOMParser();
 			const doc = parser.parseFromString(html, "text/html");
-			const newContent = doc.querySelector("#content").innerHTML;
-			document.querySelector("#content").innerHTML = newContent;
+			const newContent = doc.querySelector("#content");
+			const pageContent = document.querySelector("#content");
+			pageContent.innerHTML = newContent.innerHTML;
 			document.title = doc.title;
 
 			document.querySelectorAll("pre code").forEach((block) => {
@@ -562,8 +563,31 @@ function pureFetchLoading(url) {
 				activeArticleToc();
 			}
 			wrapImageWithLightBox();
+			reloadComment();
 		})
 		.catch((error) => console.error("Error loading content:", error));
+}
+
+/**
+ * Reload comment when page pure loading
+ */
+function reloadComment() {
+	const curComment = document.querySelector("#comment");
+	if (curComment) {
+		const curScript = curComment.querySelector("script");
+		if (curScript) {
+			const newScript = document.createElement("script");
+			newScript.src = curScript.src;
+			newScript.innerHTML = curScript.innerHTML;
+
+			for (const { name, value } of curScript.attributes) {
+				newScript.setAttribute(name, value);
+			}
+
+			curComment.innerHTML = "";
+			curComment.appendChild(newScript);
+		}
+	}
 }
 
 /**
