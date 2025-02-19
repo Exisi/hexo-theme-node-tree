@@ -70,6 +70,10 @@ header:
   github:
     enable: true
     url: ''
+  # 是否启用关于菜单
+  # Enable about menu
+  about:
+    enable: true
   # 是否启用黑暗模式
   darkMode:
     enable: true
@@ -93,21 +97,17 @@ post:
   # 版权声明，会显示在每篇文章的结尾
   copyright:
     enable: true
-
     # 知识共享许可协议
     # 协议相关: https://creativecommons.org/share-your-work/cclicenses/
     # 选项: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
     license: 'BY'
-
     # 显示作者
     author:
       enable: true
-
     # 显示发布日期
     post_date:
       enable: true
       format: "LL"
-
     # 显示更新日期
     update_date:
       enable: false
@@ -132,7 +132,6 @@ footer:
     enable: true
     url: ''
     baseYear: 2024
-
   # 展示网站的 PV、UV 统计数
   statistics:
     busuanzi:

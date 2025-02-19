@@ -70,6 +70,10 @@ header:
   github:
     enable: true
     url: ''
+  # 是否启用关于菜单
+  # Enable about menu
+  about:
+    enable: true
   # Enable dark model menu
   darkMode:
     enable: true
@@ -93,21 +97,17 @@ post:
   # Copyright, will be displayed at the end of each post
   copyright:
     enable: true
-
     # CreativeCommons license
     # See: https://creativecommons.org/share-your-work/cclicenses/
     # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
     license: 'BY'
-
     # Show author
     author:
       enable: true
-
     # Show post date
     post_date:
       enable: true
       format: "LL"
-
     # Show update date
     update_date:
       enable: false
@@ -132,7 +132,6 @@ footer:
     enable: true
     url: ''
     baseYear: 2024
-
   # Display website PV and UV statistics
   statistics:
     busuanzi:
