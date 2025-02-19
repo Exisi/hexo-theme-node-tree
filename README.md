@@ -134,8 +134,11 @@ footer:
     baseYear: 2024
   # Display website PV and UV statistics
   statistics:
-    busuanzi:
+    # Vercount is an efficient website counter based on NextJS and Redis. Support self-deployment
+    # see: https://vercount.one/
+    vercount:
       enable: true
+      src: https://cn.vercount.one/js
 
 #------------------------------------------------------
 # Post comment, support giscus

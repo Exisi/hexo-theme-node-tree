@@ -134,8 +134,11 @@ footer:
     baseYear: 2024
   # 展示网站的 PV、UV 统计数
   statistics:
-    busuanzi:
+    # Vercount 是一个基于 NextJS 和 Redis 的高效网站计数器。支持自部署
+    # 相关配置: https://vercount.one/
+    vercount:
       enable: true
+      src: https://cn.vercount.one/js
 
 #------------------------------------------------------
 # 文章评论，支持 giscus
