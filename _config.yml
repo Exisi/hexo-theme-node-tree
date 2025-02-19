@@ -37,13 +37,13 @@ header:
   github:
     enable: true
     url: ''
-  # 是否启用黑暗模式
-  # Enable dark model menu
-  darkMode:
-    enable: true
   # 是否启用关于菜单
   # Enable about menu
   about:
+    enable: true
+  # 是否启用黑暗模式
+  # Enable dark model menu
+  darkMode:
     enable: true
 
 #------------------------------------------------------
@@ -112,7 +112,6 @@ footer:
     enable: true
     url: ''
     baseYear: 2024
-
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
   statistics:
