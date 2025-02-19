@@ -142,6 +142,8 @@ footer:
 # see: https://giscus.app/
 #------------------------------------------------------
 comment:
+  # Based on GitHub Discussions, similar to Utterances
+  # See: https://giscus.app/
   giscus:
     enable: false
     repo:
@@ -158,14 +160,17 @@ comment:
 #------------------------------------------------------
 # Enable Website Analytics, Supporting Google and Baidu Analytics
 #------------------------------------------------------
-analysis:
+analytics:
+  # Baidu analytics, get the string behind `hm.js?`
+  # See: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
   baidu:
     enable: false
-    src: ''
+    hm: ''
+  # Google Analytics 4 MEASUREMENT_ID
+  # See: https://support.google.com/analytics/answer/9744165#zippy=%2Cin-this-article
   google:
     enable: false
-    src: ''
-    config: ''
+    id: ''
 ```
 
 #### Node Tree Rules

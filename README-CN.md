@@ -142,6 +142,8 @@ footer:
 # 相关配置: https://giscus.app/
 #------------------------------------------------------
 comment:
+  # 基于 GitHub Discussions
+  # 相关配置: https://giscus.app/
   giscus:
     enable: false
     repo:
@@ -158,14 +160,17 @@ comment:
 #------------------------------------------------------
 # 是否启用网站分析，支持谷歌和百度分析
 #------------------------------------------------------
-analysis:
+analytics:
+  # 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串
+  # 相关配置: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
   baidu:
     enable: false
-    src: ''
+    hm: ''
+  # Google Analytics 4 的媒体资源 ID
+  # 相关配置: https://support.google.com/analytics/answer/9744165#zippy=%2Cin-this-article
   google:
     enable: false
-    src: ''
-    config: ''
+    id: ''
 ```
 
 #### 节点树规则

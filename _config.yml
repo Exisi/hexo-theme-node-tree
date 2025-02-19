@@ -124,6 +124,9 @@ footer:
 # see: https://giscus.app/
 #------------------------------------------------------
 comment:
+  # 基于 GitHub Discussions
+  # Based on GitHub Discussions, similar to Utterances
+  # See: https://giscus.app/
   giscus:
     enable: false
     repo:
