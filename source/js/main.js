@@ -690,4 +690,14 @@ function searchTreeNode() {
 			});
 		}
 	});
+
+	searchInput.addEventListener("keyup", (e) => {
+		e.preventDefault();
+		if (e.code === "Enter") {
+			const inputContent = e.currentTarget.value;
+			if (inputContent) {
+				window.open(window.searchEngine + inputContent + "%20site:" + window.homeHost, "_blank");
+			}
+		}
+	});
 }
