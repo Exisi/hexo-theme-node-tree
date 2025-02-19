@@ -1,5 +1,5 @@
 <script>
-	document.getElementById("search-input")?.addEventListener("keyup", (e) => {
+	document.getElementById("search-input")?.onClick = ("keyup", (e) => {
 		const searchEngine = "<%- theme.sidebar.search.engine %>" ?? "https://www.google.com/search?q=";
 		const homeHost = "<%- config.url %>" ?? window.location.host;
 
