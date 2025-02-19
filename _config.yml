@@ -41,6 +41,10 @@ header:
   # Enable dark model menu
   darkMode:
     enable: true
+  # 是否启用关于菜单
+  # Enable about menu
+  about:
+    enable: true
 
 #------------------------------------------------------
 # 侧边栏配置
@@ -66,24 +70,20 @@ post:
   # Copyright, will be displayed at the end of each post
   copyright:
     enable: true
-
     # 知识共享许可协议
     # CreativeCommons license
     # See: https://creativecommons.org/share-your-work/cclicenses/
     # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
     license: 'BY'
-
     # 显示作者
     # Show author
     author:
       enable: true
-
     # 显示发布日期
     # Show post date
     post_date:
       enable: true
       format: "LL"
-
     # 显示更新日期
     # Show update date
     update_date:
