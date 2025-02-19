@@ -2,8 +2,6 @@ window.onload = function () {
 	// hljs.initHighlightingOnLoad();
 
 	wrapImageWithLightBox();
-	scrollToTop();
-	pageScroll();
 
 	treeNodeDirClickEvent();
 	switchTreeOrIndex();
@@ -186,29 +184,6 @@ function toggleSidebar(state) {
 		header.className = headerClass;
 		footer.className = footerClass;
 	}
-}
-
-/**
- * Scroll to top.
- */
-function scrollToTop() {
-	const topTopBtn = document.querySelector("#totop-toggle");
-	topTopBtn.addEventListener("click", () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	});
-}
-
-/**
- * Header scroll event.
- */
-function pageScroll() {
-	let startHeight = 0;
-	window.addEventListener("scroll", () => {
-		const { scrollY: endHeight } = window;
-		const distance = endHeight - startHeight;
-		startHeight = endHeight;
-		document.querySelector("#header").style.display = distance > 0 && endHeight > 50 ? "none" : "";
-	});
 }
 
 /**

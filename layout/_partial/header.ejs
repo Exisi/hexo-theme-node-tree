@@ -60,3 +60,13 @@
 		<% } %>
 	</ul>
 </header>
+
+<script>
+	let startHeight = 0;
+	window.addEventListener("scroll", () => {
+		const { scrollY: endHeight } = window;
+		const distance = endHeight - startHeight;
+		startHeight = endHeight;
+		document.querySelector("#header").style.display = distance > 0 && endHeight > 50 ? "none" : "";
+	});
+</script>

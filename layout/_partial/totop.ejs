@@ -1,1 +1,8 @@
 <button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+
+<script>
+    const topTopBtn = document.querySelector("#totop-toggle");
+	topTopBtn.addEventListener("click", () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	});
+</script>
