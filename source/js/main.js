@@ -1,6 +1,5 @@
 window.onload = function () {
 	// hljs.initHighlightingOnLoad();
-	switchDarkMode();
 
 	wrapImageWithLightBox();
 	scrollToTop();
@@ -17,33 +16,6 @@ window.onload = function () {
 
 	searchTreeNode();
 };
-
-/**
- * Switch dark mode.
- */
-function switchDarkMode() {
-	const localModel = localStorage.getItem("darkModel");
-	const darkModel = !localModel ? 0 : localModel;
-
-	const darkModeIcon = document.querySelector("#menu .dark-mode i");
-
-	if (darkModel == 1) {
-		darkModeIcon.classList.replace("fa-moon-o", "fa-sun-o");
-		DarkReader.enable({
-			brightness: 100,
-			contrast: 90,
-			sepia: 10,
-		});
-	}
-
-	darkModeIcon.addEventListener("click", () => {
-		const isMoon = darkModeIcon.classList.contains("fa-moon-o");
-		darkModeIcon.classList.toggle("fa-moon-o", !isMoon);
-		darkModeIcon.classList.toggle("fa-sun-o", isMoon);
-		localStorage.setItem("darkModel", isMoon ? 1 : 0);
-		isMoon ? DarkReader.enable({ brightness: 100, contrast: 90, sepia: 10 }) : DarkReader.disable();
-	});
-}
 
 /**
  * Wrap images with light box support.
