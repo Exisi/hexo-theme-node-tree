@@ -141,11 +141,16 @@ comment:
 # 是否启用网站分析，支持谷歌和百度分析
 # Enable Website Analytics, Supporting Google and Baidu Analytics
 #------------------------------------------------------
-analysis:
+analytics:
+  # 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串
+  # Baidu analytics, get the string behind `hm.js?`
+  # See: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
   baidu:
     enable: false
-    src: ''
+    hm: ''
+  # Google Analytics 4 的媒体资源 ID
+  # Google Analytics 4 MEASUREMENT_ID
+  # See: https://support.google.com/analytics/answer/9744165#zippy=%2Cin-this-article
   google:
     enable: false
-    src: ''
-    config: ''
+    id: ''
