@@ -620,7 +620,7 @@ function reloadHeadScript() {
 function setupNavigation() {
 	document.addEventListener("click", function (e) {
 		const target = e.target.closest("a");
-		if (target && target.matches("#menu a, #tree a, #index a")) {
+		if (target && target.matches("#menu a, #tree a[href], #index a")) {
 			e.preventDefault();
 			const url = target.href;
 			history.pushState(null, "", url);

@@ -157,6 +157,9 @@ a.active {
 	-ms-user-select: none;
 	-o-user-select: none;
 }
+.directory-empty {
+	cursor: pointer;
+}
 .toc-active {
 	color: #9cc7b8;
 	border-bottom: 1px solid #9cc7b8;
