@@ -61,18 +61,19 @@ sidebar:
     # https://www.google.com/search?q=
     engine: https://www.google.com/search?q=
 
-
+#------------------------------------------------------
 # 代码块的增强配置
 # Enhancements to code blocks
+#------------------------------------------------------
 code:
   # 代码高亮
   # Code highlight
   highlight:
     highlightcss:
-      # 在链接中挑选 style 填入
+      # 在链接中挑选样式填入
       # Select a style in the link
       # See: https://highlightjs.org/static/demo/
-      theme: "tokyo-night-dark"
+      style: "tokyo-night-dark"
 
 #------------------------------------------------------
 # 是否启用文章版权

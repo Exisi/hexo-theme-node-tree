@@ -1,5 +1,5 @@
 <% if (config.highlight.enable) { %>
-<% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.theme}.css`; %>
+<% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`; %>
 <script async>
     fetch("<%= url %>")
         .then((response) => response.text())
