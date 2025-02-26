@@ -336,13 +336,34 @@ ul li a {
 	max-width: 100%;
 	height: auto;
 }
-#article-content > pre:has(code) {
+#article-content > pre:has(code:not(.highlight, .hljs)) {
 	margin: 20px 0 15px;
+	position: relative;
 	background-color: #f6f8fa;
+	border-radius: 5px;
+	padding: 35px 15px 20px 15px;
+}
+#article-content > pre:has(.hljs) {
+	position: relative;
+}
+#article-content > pre > code.hljs {
+	margin: 20px 0 15px;
+	border-radius: 5px;
+	padding: 35px 15px 20px 15px;
+}
+#article-content pre code:not(.highlight, .hljs) {
+	display: inline-block;
+	width: 100%;
+	overflow-x: scroll;
+}
+#article-content > pre:has(code) code:has(.highlight) {
+	margin: 20px 0 15px;
 	padding: 35px 15px 15px 15px;
 	position: relative;
-	margin: 20px 0 15px;
+	border-radius: 5px;
 }
+
+#article-content > pre:has(code:not(.highlight, .hljs)) > code::before,
 #article-content > pre:has(code) > .highlight::before,
 #article-content > pre:has(code) > .hljs::before {
 	background: #fc625d;
@@ -359,12 +380,18 @@ ul li a {
 	line-height: 32px;
 }
 #article-content figure.highlight:has(.code) {
-	background: #21252b;
 	border-radius: 5px;
 	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
 	padding: 38px 0 15px 0;
 	position: relative;
 	margin: 20px 0 15px;
+	table-layout: fixed;
+	width: 100%;
+	overflow: auto;
+}
+#article-content figure.highlight.hljs:has(.code) table:has(.keyword, .title, .function, .string),
+#article-content figure.highlight:not(.hljs) table:has(.code) {
+	margin-top: 20px;
 }
 #article-content figure.highlight:has(.code)::before {
 	background: #fc625d;
@@ -374,9 +401,18 @@ ul li a {
 	height: 12px;
 	left: 12px;
 	margin-top: -25px;
-	position: absolute;
+	position: sticky;
 	width: 12px;
+	display: block;
 }
+#article-content figure.highlight:has(.code) table {
+	border-collapse: collapse;
+}
+
+#article-content figure.highlight table {
+	margin-bottom: 20px;
+}
+
 #article-content figure.highlight td.gutter pre {
 	text-align: right;
 	padding: 0 15px;
@@ -385,11 +421,13 @@ ul li a {
 }
 #article-content figure.highlight .code pre {
 	padding: 0 10px;
-	width: 80%;
-	overflow-x: scroll;
+	box-sizing: border-box;
 }
 #article-content figure.highlight .gutter {
 	width: 15px;
+	position: sticky;
+	left: 0;
+	z-index: 1;
 }
 #article-content figure.highlight td.gutter pre span.line {
 	color: #999;
