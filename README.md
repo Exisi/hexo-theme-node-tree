@@ -91,6 +91,17 @@ sidebar:
     engine: https://www.google.com/search?q=
 
 #------------------------------------------------------
+# Enhancements to code blocks
+#------------------------------------------------------
+code:
+  # Code highlight
+  highlight:
+    highlightcss:
+      # Select a style in the link
+      # See: https://highlightjs.org/static/demo/
+      style: "tokyo-night-dark"
+
+#------------------------------------------------------
 # Enable the post copyright
 #------------------------------------------------------
 post:
