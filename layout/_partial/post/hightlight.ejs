@@ -1,0 +1,24 @@
+<% if (config.highlight.enable) { %>
+<% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.theme}.css`; %>
+<script async>
+    fetch("<%= url %>")
+        .then((response) => response.text())
+        .then((cssContent) => {
+            const style = document.createElement("style");
+            style.innerHTML = cssContent
+                .replace(".hljs-code,", "")
+                .replaceAll("_", " ")
+                .replaceAll("hljs-", "hljs .")
+                .replaceAll(".hljs", " figure.highlight")
+                .replaceAll(".built in", ".built_in")
+                .replaceAll("title.", "");
+            document.head.appendChild(style);
+        })
+        .catch((error) => {
+            console.error("Error loading CSS:", error);
+        });
+</script>
+<% } %>
+
+<% if (config.prismjs.enable && !config.highlight.enable) { %>
+<% } %>

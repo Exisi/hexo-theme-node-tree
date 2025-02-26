@@ -1,6 +1,4 @@
 window.onload = function () {
-	// hljs.initHighlightingOnLoad();
-
 	wrapImageWithLightBox();
 
 	treeNodeDirClickEvent();
@@ -517,10 +515,6 @@ function pureFetchLoading(url) {
 			const pageContent = document.querySelector("#content");
 			pageContent.innerHTML = newContent.innerHTML;
 			document.title = doc.title;
-
-			document.querySelectorAll("pre code").forEach((block) => {
-				hljs.highlightBlock(block);
-			});
 			document.querySelector("#tree .active")?.classList.remove("active");
 
 			const fullTitle = decodeURI(window.location.pathname).slice(1, -1).split("/");
