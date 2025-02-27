@@ -1,4 +1,4 @@
-<% if (config.highlight.enable) { %>
+<% if (config.highlight.enable || config.syntax_highlighter === 'highlight.js') { %>
     <% if (!config.highlight.line_number && !config.highlight.wrap) { %>
         <%- css(`https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`) %>
         <%- js('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js') %>
