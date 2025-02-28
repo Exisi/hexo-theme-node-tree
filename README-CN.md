@@ -98,8 +98,16 @@ code:
   highlight:
     highlightcss:
       # 在链接中挑选样式填入
-      # See: https://highlightjs.org/static/demo/
+      # 主题样式: https://highlightjs.org/static/demo/
       style: "tokyo-night-dark"
+    prismcss:
+      # 在链接中挑选样式填入
+      # 主题样式: https://prismjs.com/
+      style: "prism"
+  # 代码复制按钮
+  copyBtn:
+    # 是否开启复制代码的按钮
+    enable: true
 
 #------------------------------------------------------
 # 是否启用文章版权

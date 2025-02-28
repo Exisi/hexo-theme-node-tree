@@ -100,6 +100,15 @@ code:
       # Select a style in the link
       # See: https://highlightjs.org/static/demo/
       style: "tokyo-night-dark"
+    prismcss:
+      # Select a style in the link
+      # See: https://prismjs.com/
+      style: "prism"
+  # 代码复制按钮
+  # Code copy button
+  copyBtn:
+    # Enable copy code button
+    enable: true
 
 #------------------------------------------------------
 # Enable the post copyright
