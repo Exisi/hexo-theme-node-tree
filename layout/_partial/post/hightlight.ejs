@@ -6,57 +6,92 @@
     <% } %>
 
     <% if (!config.highlight.line_number && config.highlight.wrap) { %>
-    <% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`; %>
-    <script async>
-    console.log("<%= url %>");
-        fetch("<%= url %>")
-            .then((response) => response.text())
-            .then((cssContent) => {
-                const style = document.createElement("style");
-                <% if (!config.highlight.hljs) { %>
-                    cssContent = cssContent
-                        .replace(".hljs-code,", "")
-                        .replaceAll("_", " ")
-                        .replaceAll(".hljs-", ".")
-                        .replaceAll(".built in", ".built_in")
-                        .replaceAll("title.", "");
-                 <% } %>
-                document.querySelector("figure.highlight").classList.add("hljs");
-                style.innerHTML = cssContent;
-                document.head.appendChild(style);
-            })
-            .catch((error) => {
-                console.error("Error loading CSS:", error);
-            });
-    </script>
+        <% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`; %>
+        <script async>
+            fetch("<%= url %>")
+                .then((response) => response.text())
+                .then((cssContent) => {
+                    const style = document.createElement("style");
+                    <% if (!config.highlight.hljs) { %>
+                        cssContent = cssContent
+                            .replace(".hljs-code,", "")
+                            .replaceAll("_", " ")
+                            .replaceAll(".hljs-", ".")
+                            .replaceAll(".built in", ".built_in")
+                            .replaceAll("title.", "");
+                    <% } %>
+                    document.querySelector("figure.highlight").classList.add("hljs");
+                    style.innerHTML = cssContent;
+                    document.head.appendChild(style);
+                })
+                .catch((error) => {
+                    console.error("Error loading CSS:", error);
+                });
+        </script>
     <% } %>
 
     <% if (config.highlight.line_number) { %>
-    <% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`; %>
-    <script async>
-        fetch("<%= url %>")
-            .then((response) => response.text())
-            .then((cssContent) => {
-                const style = document.createElement("style");
-                <% if (!config.highlight.hljs) { %>
-                    cssContent = cssContent
-                        .replace(".hljs-code,", "")
-                        .replaceAll("_", " ")
-                        .replaceAll("hljs-", "hljs .")
-                        .replaceAll(".hljs", " .highlight")
-                        .replaceAll(".built in", ".built_in")
-                        .replaceAll("title.", "");
-                    document.querySelector("figure.highlight td.gutter").classList.add("highlight");
-                <% } else{ %>
-                    document.querySelector("figure.highlight td.gutter").classList.add("hljs");
-                    document.querySelector("figure.highlight").classList.add("hljs");
-                 <% } %>
-                style.innerHTML = cssContent;
-                document.head.appendChild(style);
-            })
-            .catch((error) => {
-                console.error("Error loading CSS:", error);
-            });
-    </script>
+        <% const url = `https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/${theme.code.highlight.highlightcss.style}.css`; %>
+        <script async>
+            fetch("<%= url %>")
+                .then((response) => response.text())
+                .then((cssContent) => {
+                    const style = document.createElement("style");
+                    <% if (!config.highlight.hljs) { %>
+                        cssContent = cssContent
+                            .replace(".hljs-code,", "")
+                            .replaceAll("_", " ")
+                            .replaceAll("hljs-", "hljs .")
+                            .replaceAll(".hljs", " .highlight")
+                            .replaceAll(".built in", ".built_in")
+                            .replaceAll("title.", "");
+                        document.querySelector("figure.highlight td.gutter").classList.add("highlight");
+                    <% } else{ %>
+                        document.querySelector("figure.highlight td.gutter").classList.add("hljs");
+                        document.querySelector("figure.highlight").classList.add("hljs");
+                    <% } %>
+                    style.innerHTML = cssContent;
+                    document.head.appendChild(style);
+                })
+                .catch((error) => {
+                    console.error("Error loading CSS:", error);
+                });
+        </script>
     <% } %>
+<% } %>
+
+<% if (config.prismjs.enable || config.syntax_highlighter === 'prismjs') { %>
+    <%- css(`https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/${theme.code.highlight.prismcss.style}.css`) %>
+    <%- js('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js') %>
+
+    <% if (config.prismjs.line_number) { %>
+        <%- css('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css') %>
+        <%- js('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js') %>
+    <% } %>
+<% } %>
+
+<% if (theme.code.copyBtn.enable) { %>
+    <script async>
+        const targets = document.querySelectorAll("figure.highlight, #article-content > pre:not(.highlight,.hljs)");
+        targets.forEach((block) => {
+            const copyBtn = document.createElement("button");
+            copyBtn.innerHTML = `<i class="fa fa-clone" aria-hidden="true"></i>`;
+            copyBtn.className = "code-copy";
+
+            <% if (config.syntax_highlighter && config.syntax_highlighter !== 'prismjs' ) { %>
+                copyBtn.style.color = "#fff";
+            <% } %>
+
+            copyBtn.addEventListener("click", () => {
+                const text = block.querySelector("td.code")?.textContent || block.querySelector("code")?.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    copyBtn.innerHTML = "Copied!";
+                    setTimeout(() => {
+                        copyBtn.innerHTML = `<i class="fa fa-clone" aria-hidden="true"></i>`;
+                    }, 2000);
+                });
+            });
+            block.appendChild(copyBtn);
+        });
+    </script>
 <% } %>

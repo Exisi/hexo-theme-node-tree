@@ -1,13 +1,7 @@
-@font-face {
-	font-family: Comic Sans MS;
-	src: url(../font/comic.ttf);
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: Comic Sans MS, Microsoft YaHei UI;
 }
 
 html {
@@ -336,7 +330,17 @@ ul li a {
 	max-width: 100%;
 	height: auto;
 }
-#article-content > pre:has(code:not(.highlight, .hljs)) {
+
+#article-content pre.line-numbers {
+	margin: 20px 0 15px;
+	border-radius: 5px;
+	padding: 35px 15px 20px 55px;
+}
+#article-content .line-numbers .line-numbers-rows {
+	top: 35px;
+	left: -7px;
+}
+#article-content > pre:not(.line-numbers):has(code:not(.highlight, .hljs)) {
 	margin: 20px 0 15px;
 	position: relative;
 	background-color: #f6f8fa;
@@ -362,7 +366,7 @@ ul li a {
 	position: relative;
 	border-radius: 5px;
 }
-
+#article-content > .code-toolbar > pre.line-numbers::before,
 #article-content > pre:has(code:not(.highlight, .hljs)) > code::before,
 #article-content > pre:has(code) > .highlight::before,
 #article-content > pre:has(code) > .hljs::before {
@@ -375,6 +379,9 @@ ul li a {
 	margin-top: -25px;
 	position: absolute;
 	width: 12px;
+}
+#article-content > pre.line-numbers > code {
+	position: unset;
 }
 #article-content p {
 	line-height: 32px;
@@ -408,11 +415,12 @@ ul li a {
 #article-content figure.highlight:has(.code) table {
 	border-collapse: collapse;
 }
-
+#article-content pre.line-numbers > code {
+	position: unset;
+}
 #article-content figure.highlight table {
 	margin-bottom: 20px;
 }
-
 #article-content figure.highlight td.gutter pre {
 	text-align: right;
 	padding: 0 15px;
@@ -437,6 +445,19 @@ ul li a {
 	padding: 0 0.75rem;
 	border-radius: initial;
 	border-right: 1px solid #999;
+}
+#article-content .code-toolbar:has(pre.line-numbers) > .toolbar {
+	right: 10px;
+}
+#article-content figure .code-copy,
+#article-content pre .code-copy {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: none;
+	text-align: right;
+	z-index: 1;
+	cursor: pointer;
 }
 
 .post-guide .item {
