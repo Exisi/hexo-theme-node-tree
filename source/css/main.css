@@ -460,6 +460,13 @@ ul li a {
 	cursor: pointer;
 }
 
+#comment {
+	margin-top: 20px;
+}
+
+.post-guide {
+	display: flex;
+}
 .post-guide .item {
 	width: 50%;
 	display: -webkit-box;

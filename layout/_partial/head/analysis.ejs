@@ -1,5 +1,5 @@
 <% if (theme.analytics.baidu.enable && theme.analytics.baidu.hm){ %>
-	<script>
+	<script async reload>
 			var _hmt = _hmt || [];
 			(function () {
 				var hm = document.createElement("script");
@@ -11,8 +11,8 @@
 <% } %>
 
 <% if (theme.analytics.google.enable && theme.analytics.google.id){ %>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=<%- theme.analytics.google.id %>"></script>
-	<script>
+	<script async reload src="https://www.googletagmanager.com/gtag/js?id=<%- theme.analytics.google.id %>"></script>
+	<script async reload>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());

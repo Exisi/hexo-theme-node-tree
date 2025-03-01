@@ -194,7 +194,8 @@ function treeNodeDirClickEvent() {
 	}
 
 	document.addEventListener("click", function (e) {
-		if (e.target.matches("#tree a")) {
+		if (e.target.matches("#tree li.file > a, #tree li.directory > a")) {
+			e.preventDefault();
 			toggleActiveNodeTree(e.target);
 		}
 	});
@@ -556,40 +557,16 @@ function pureFetchLoading(url) {
 				activeArticleToc();
 			}
 			wrapImageWithLightBox();
-			reloadComment();
-			reloadHeadScript();
+			reloadMarkScript();
 		})
 		.catch((error) => console.error("Error loading content:", error));
 }
 
 /**
- * Reload comment when page pure loading
- */
-function reloadComment() {
-	const curComment = document.querySelector("#comment");
-	if (curComment) {
-		const curScript = curComment.querySelector("script");
-		if (curScript) {
-			const newScript = document.createElement("script");
-			newScript.src = curScript.src;
-			newScript.innerHTML = curScript.innerHTML;
-
-			for (const { name, value } of curScript.attributes) {
-				newScript.setAttribute(name, value);
-			}
-
-			curComment.innerHTML = "";
-			curComment.appendChild(newScript);
-		}
-	}
-}
-
-/**
  * Reload web analysis when page pure loading
  */
-function reloadHeadScript() {
-	const head = document.head;
-	const scripts = head.querySelectorAll("script");
+function reloadMarkScript() {
+	const scripts = document.querySelectorAll("script[reload]");
 	scripts.forEach((script) => {
 		const parentElement = script.parentElement;
 		if (parentElement) {
@@ -598,12 +575,8 @@ function reloadHeadScript() {
 			for (const { name, value } of script.attributes) {
 				newScript.setAttribute(name, value);
 			}
-			const src = newScript.getAttribute("src") || "";
-			const isExcluded = !["main.js", "darkreader"].some((substring) => src.includes(substring));
-			if (isExcluded) {
-				parentElement.removeChild(script);
-				parentElement.appendChild(newScript);
-			}
+			parentElement.removeChild(script);
+			parentElement.appendChild(newScript);
 		}
 	});
 }
@@ -614,7 +587,10 @@ function reloadHeadScript() {
 function setupNavigation() {
 	document.addEventListener("click", function (e) {
 		const target = e.target.closest("a");
-		if (target && target.matches("#menu a, #tree a[href], #index a")) {
+		if (
+			target &&
+			target.matches("#menu a, #index a, #tree li.file > a[href], #tree li.directory > a[href]")
+		) {
 			e.preventDefault();
 			const url = target.href;
 			history.pushState(null, "", url);
