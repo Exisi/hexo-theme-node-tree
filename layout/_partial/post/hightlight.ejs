@@ -71,10 +71,10 @@
 <% } %>
 
 <% if (theme.code.copyBtn.enable) { %>
-    <script async>
-        const targets = document.querySelectorAll("figure.highlight, #article-content > pre:not(.highlight,.hljs)");
+    <script async reload>
+        var targets = document.querySelectorAll("figure.highlight, #article-content > pre:not(.highlight,.hljs)");
         targets.forEach((block) => {
-            const copyBtn = document.createElement("button");
+            var copyBtn = document.createElement("button");
             copyBtn.innerHTML = `<i class="fa fa-clone" aria-hidden="true"></i>`;
             copyBtn.className = "code-copy";
 
