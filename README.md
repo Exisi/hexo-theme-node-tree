@@ -70,7 +70,6 @@ header:
   github:
     enable: true
     url: ''
-  # 是否启用关于菜单
   # Enable about menu
   about:
     enable: true
@@ -104,7 +103,6 @@ code:
       # Select a style in the link
       # See: https://prismjs.com/
       style: "prism"
-  # 代码复制按钮
   # Code copy button
   copyBtn:
     # Enable copy code button
