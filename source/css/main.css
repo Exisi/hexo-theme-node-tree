@@ -5,7 +5,8 @@
 }
 
 html {
-	font-family: microsoft yahei, helvetica, simhei, simsun, sans-serif;
+	font-family: Microsoft YaHei, Segoe UI, Helvetica, sans-serif, simhei, simsun, -apple-system,
+		BlinkMacSystemFont, Apple Color Emoji, Segoe UI Emoji;
 }
 
 a {
