@@ -189,6 +189,7 @@ ul li a {
 	color: rgb(122, 122, 122);
 	border-bottom: 1px solid #ccc;
 }
+#sidebar ul li.active a,
 #sidebar ul li .active a {
 	color: #9cc7b8;
 	border-bottom: 1px solid #9cc7b8;
