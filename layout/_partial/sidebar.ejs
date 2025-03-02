@@ -52,10 +52,13 @@
 					<!-- Output HTML structure -->
 					treeNodes.forEach(function(node) {
 						if ( node.children == 0 ) {
+							let fullUrl = node.post.permalink.slice(0,-1);
+							const url = new URL( fullUrl);
+							const linkTitle = decodeURIComponent(url.pathname);
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
-									<a href="<%- url_for(node.post.path) %>" title="<%- node.post.slug %>">
+									<a href="<%- url_for(node.post.path) %>" title="<%- linkTitle %>">
 									<% if (theme.sidebar && theme.sidebar.usePostTitle) { %>
 										<%- node.post.title || node.title %>
 									<% } else { %>
@@ -83,7 +86,9 @@
 
 							let linkTitle;
 							if(parent && parent.post !== parent){
-								linkTitle = parent.post.slug;
+								let fullUrl = parent.post.permalink.slice(0,-1);
+								const url = new URL( fullUrl);
+								linkTitle = decodeURIComponent(url.pathname);
 							} else{
 								linkTitle = '';
 							}

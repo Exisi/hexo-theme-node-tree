@@ -518,7 +518,7 @@ function pureFetchLoading(url) {
 			document.title = doc.title;
 			document.querySelector("#tree .active")?.classList.remove("active");
 
-			const title = decodeURI(window.location.pathname).slice(1, -1);
+			const title = decodeURI(window.location.pathname).slice(0, -1);
 			if (title.length) {
 				let treeNodes = document.querySelectorAll(`#tree li.file a[title='${title}']`);
 				if (treeNodes.length) {
