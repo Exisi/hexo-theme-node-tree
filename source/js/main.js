@@ -523,15 +523,15 @@ function pureFetchLoading(url) {
 			const title = fullTitle.join("/");
 
 			if (title.length) {
-				let searchResult = document.querySelectorAll("#tree li.file a[title='" + title + "']");
-				if (searchResult.length) {
+				let treeNodes = document.querySelectorAll("#tree li.file a[title='" + title + "']");
+				if (treeNodes.length) {
 					document.querySelectorAll(".fa-minus-square-o").forEach((icon) => {
 						icon.classList.replace("fa-minus-square-o", "fa-plus-square-o");
 					});
 					document.querySelectorAll("#tree ul").forEach((ul) => {
 						ul.style.display = "none";
 					});
-					if (searchResult.length > 1) {
+					if (treeNodes.length > 1) {
 						const categories = document
 							.querySelector("#article-categories span:last-child a")
 							?.innerHTML.trim();
@@ -539,20 +539,20 @@ function pureFetchLoading(url) {
 							const directoryList = document.querySelectorAll(
 								"#tree li.directory a:contains('" + categories + "')"
 							);
-							searchResult = Array.from(directoryList)
+							treeNodes = Array.from(directoryList)
 								.map((el) => el.nextElementSibling.querySelector("a[title='" + title + "']"))
 								.filter((el) => el);
 						}
 					}
-					searchResult[0].parentNode.classList.add("active");
+					treeNodes[0].parentNode.classList.add("active");
 
 					const activeNode = document.querySelector("#tree .active");
 					showActiveNodeChildren(activeNode, true);
 				}
 
-				if (!searchResult.length) {
-					searchResult = document.querySelectorAll("#tree li.directory a[title='" + title + "']");
-					searchResult[0].classList.add("active");
+				if (!treeNodes.length) {
+					treeNodes = document.querySelector("#tree li.directory a[title='" + title + "']");
+					treeNodes.classList.add("active");
 				}
 				activeArticleToc();
 			}
@@ -639,13 +639,13 @@ function searchTreeNode() {
 			ul.style.display = "none";
 		});
 
-		const searchResultNode = document.querySelectorAll("#tree li a");
-		const searchResult = Array.from(searchResultNode).filter((node) => {
+		const treeNodeLinks = document.querySelectorAll("#tree li a");
+		const searchResultNodes = Array.from(treeNodeLinks).filter((node) => {
 			return node.textContent.includes(inputContent);
 		});
 
-		if (searchResult.length) {
-			searchResult.forEach((result) => {
+		if (searchResultNodes.length) {
+			searchResultNodes.forEach((result) => {
 				toggleActiveNodeTree(result);
 				showActiveNodeChildren(result.parentElement, false);
 
