@@ -70,16 +70,16 @@
 
 <% if (config.prismjs.enable || config.syntax_highlighter === 'prismjs') { %>
     <%- css(`https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/${theme.code.highlight.prismcss.style}.css`) %>
-    <%- js('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js') %>
+    <script reload src='https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'></script>
 
     <% if (config.prismjs.line_number) { %>
         <%- css('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css') %>
-        <%- js('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js') %>
+        <script reload src='https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js'></script>
     <% } %>
 <% } %>
 
 <% if (theme.code.copyBtn.enable) { %>
-    <script async reload>
+    <script reload>
         var targets = document.querySelectorAll("figure.highlight, #article-content > pre:not(.highlight,.hljs)");
         targets.forEach((block) => {
             const copyBtn = document.createElement("button");
