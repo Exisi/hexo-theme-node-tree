@@ -520,7 +520,7 @@ function pureFetchLoading(url) {
 
 			const title = decodeURI(window.location.pathname).slice(1, -1);
 			if (title.length) {
-				let treeNodes = document.querySelectorAll("#tree li.file a[title='" + title + "']");
+				let treeNodes = document.querySelectorAll(`#tree li.file a[title='${title}']`);
 				if (treeNodes.length) {
 					document.querySelectorAll(".fa-minus-square-o").forEach((icon) => {
 						icon.classList.replace("fa-minus-square-o", "fa-plus-square-o");
@@ -537,7 +537,7 @@ function pureFetchLoading(url) {
 								"#tree li.directory a:contains('" + categories + "')"
 							);
 							treeNodes = Array.from(directoryList)
-								.map((el) => el.nextElementSibling.querySelector("a[title='" + title + "']"))
+								.map((el) => el.nextElementSibling.querySelector(`a[title='${title}']`))
 								.filter((el) => el);
 						}
 					}
@@ -548,7 +548,7 @@ function pureFetchLoading(url) {
 				}
 
 				if (!treeNodes.length) {
-					const treeNode = document.querySelector("#tree li.directory a[title='" + title + "']");
+					const treeNode = document.querySelector(`#tree li.directory a[title='${title}']`);
 					treeNode.classList.add("active");
 				}
 				activeArticleToc();
