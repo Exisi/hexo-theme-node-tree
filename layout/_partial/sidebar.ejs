@@ -52,12 +52,10 @@
 					<!-- Output HTML structure -->
 					treeNodes.forEach(function(node) {
 						if ( node.children == 0 ) {
-							const path = node.post.path.slice(1,-1)
-							let linkTitle = path;
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
-									<a href="<%- url_for(node.post.path) %>" title="<%- linkTitle %>">
+									<a href="<%- url_for(node.post.path) %>" title="<%- node.post.slug %>">
 									<% if (theme.sidebar && theme.sidebar.usePostTitle) { %>
 										<%- node.post.title || node.title %>
 									<% } else { %>
@@ -72,8 +70,8 @@
 							let parent;
 							let childrens = [];
 							node.children.forEach(child => {
-								let path = child.post.path.slice(0,-1);
-								let title = path.split("/").slice(-1)[0];
+								const titleList = child.post.slug.split("/");
+								const title = titleList.slice(-1)[0];
 								if(node.title === title) {
 									parent = child;
 								}else{
@@ -82,9 +80,10 @@
 							});
 
 							let pageTitle = page.path.slice(0,-1).split("/").slice(-1)[0];
+
 							let linkTitle;
 							if(parent && parent.post !== parent){
-								linkTitle = parent.post.path.slice(1,-1);
+								linkTitle = parent.post.slug;
 							} else{
 								linkTitle = '';
 							}
@@ -92,7 +91,7 @@
 							<ul>
 								<li class="directory">
 			<% 						if(linkTitle){ %>
-										<a class="directory <%- (node.title == pageTitle) ? 'active' : '' %>" href="<%- parent.post.path %>" title="<%- linkTitle %>">
+										<a class="directory <%- (node.title == pageTitle) ? 'active' : '' %>" href="<%- url_for(parent.post.path) %>" title="<%- linkTitle %>">
 											<i class="fa fa-plus-square-o"></i>
 											<%- node.title %>
 										</a>
