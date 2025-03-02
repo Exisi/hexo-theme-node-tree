@@ -86,7 +86,7 @@
             copyBtn.innerHTML = `<i class="fa fa-clone" aria-hidden="true"></i>`;
             copyBtn.className = "code-copy";
 
-            <% if (config.syntax_highlighter && config.syntax_highlighter !== 'prismjs' ) { %>
+            <% if ((config.syntax_highlighter && config.syntax_highlighter !== 'prismjs' ) || (config.highlight.enable && !config.prismjs.enable)) { %>
                 copyBtn.style.color = "#fff";
             <% } %>
 
