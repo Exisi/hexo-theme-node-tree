@@ -518,10 +518,7 @@ function pureFetchLoading(url) {
 			document.title = doc.title;
 			document.querySelector("#tree .active")?.classList.remove("active");
 
-			const fullTitle = decodeURI(window.location.pathname).slice(1, -1).split("/");
-			fullTitle.splice(0, 3);
-			const title = fullTitle.join("/");
-
+			const title = decodeURI(window.location.pathname).slice(1, -1);
 			if (title.length) {
 				let treeNodes = document.querySelectorAll("#tree li.file a[title='" + title + "']");
 				if (treeNodes.length) {
@@ -551,8 +548,8 @@ function pureFetchLoading(url) {
 				}
 
 				if (!treeNodes.length) {
-					treeNodes = document.querySelector("#tree li.directory a[title='" + title + "']");
-					treeNodes.classList.add("active");
+					const treeNode = document.querySelector("#tree li.directory a[title='" + title + "']");
+					treeNode.classList.add("active");
 				}
 				activeArticleToc();
 			}

@@ -5,9 +5,9 @@
 		<div id="tree">
 			<%
 				<!-- Convert the posts file path into a tree shaped directory structure -->
-				const pathToTree = (input) => {
+				const pathToTree = (treeNodes) => {
 					var output = [];
-					input.forEach(function(post){
+					treeNodes.forEach(function(post){
 						<!-- Only retain the directory and post title, not include time and domain name prefix -->
 						var chain = post.slug.split("/");
 						var currentNode = output;
@@ -38,10 +38,10 @@
 			%>
 			<%
 				<!-- Recursively display the directory on the sidebar -->
-				const showTree = (input) => {
+				const showTree = (treeNodes) => {
 
 					<!-- Sort by date in ASC order -->
-					input.sort(function(a, b){
+					treeNodes.sort(function(a, b){
 						let date ={
 							a:new Date(a.post.date),
 							b:new Date(b.post.date),
@@ -50,13 +50,14 @@
 					});
 
 					<!-- Output HTML structure -->
-					input.forEach(function(node) {
+					treeNodes.forEach(function(node) {
 						if ( node.children == 0 ) {
-							let link_title = node.post.path.split('/').slice(3,-1).join("/");
+							const path = node.post.path.slice(1,-1)
+							let linkTitle = path;
 			%>
 							<ul>
 								<li class="file<%- (is_post() && node.post._id == page._id) ? ' active' : '' %>">
-									<a href="<%- url_for(node.post.path) %><%-  %>" title="<%-link_title %>">
+									<a href="<%- url_for(node.post.path) %>" title="<%- linkTitle %>">
 									<% if (theme.sidebar && theme.sidebar.usePostTitle) { %>
 										<%- node.post.title || node.title %>
 									<% } else { %>
@@ -73,20 +74,17 @@
 							node.children.forEach(child => {
 								let path = child.post.path.slice(0,-1);
 								let title = path.split("/").slice(-1)[0];
-
-								if(node.title != title) {
-									childrens.push(child);
-								}else{
+								if(node.title === title) {
 									parent = child;
+								}else{
+									childrens.push(child);
 								}
 							});
-			%>
 
-			<%
 							let pageTitle = page.path.slice(0,-1).split("/").slice(-1)[0];
 							let linkTitle;
-							if(parent?.post !== parent){
-								linkTitle = parent.post.path.split("/").slice(3,-1).join("/");
+							if(parent && parent.post !== parent){
+								linkTitle = parent.post.path.slice(1,-1);
 							} else{
 								linkTitle = '';
 							}
@@ -94,12 +92,12 @@
 							<ul>
 								<li class="directory">
 			<% 						if(linkTitle){ %>
-										<a class="directory <%- (node.title == pageTitle) ? 'active' : '' %>" href="/<%- parent.post.path %>" title="<%- linkTitle%>">
+										<a class="directory <%- (node.title == pageTitle) ? 'active' : '' %>" href="<%- parent.post.path %>" title="<%- linkTitle %>">
 											<i class="fa fa-plus-square-o"></i>
 											<%- node.title %>
 										</a>
 			<% 						} else { %>
-										<a title="<%- node.title%>" class="directory-empty">
+										<a title="<%- node.title %>" class="directory-empty">
 											<i class="fa fa-plus-square-o"></i>
 											<%- node.title %>
 										</a>
