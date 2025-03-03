@@ -5,6 +5,7 @@ window.onload = function () {
 	switchTreeOrIndex();
 	toggleTreeNodes();
 
+	pureFetchLoading();
 	setupNavigation();
 
 	activeArticleToc();

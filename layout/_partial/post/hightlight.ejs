@@ -22,6 +22,13 @@
                     <% } %>
                     style.innerHTML = cssContent;
                     document.head.appendChild(style);
+
+                    <% if(config.highlight.hljs){ %>
+                        const figures = document.querySelectorAll("figure.highlight");
+                        figures.forEach(figure=>{
+                            figure.classList.add("hljs");
+                        });
+                    <% } %>
                 })
                 .catch((error) => {
                     console.error("Error loading CSS:", error);
@@ -70,7 +77,7 @@
 
 <% if (config.prismjs.enable || config.syntax_highlighter === 'prismjs') { %>
     <%- css(`https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/${theme.code.highlight.prismcss.style}.css`) %>
-    <script reload src='https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'></script>
+    <%- js('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js') %>
 
     <% if (config.prismjs.line_number) { %>
         <%- css('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css') %>

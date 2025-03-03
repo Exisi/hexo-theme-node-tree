@@ -332,14 +332,28 @@ ul li a {
 	max-width: 100%;
 	height: auto;
 }
-
+#article-content p,
+#article-content ul,
+#article-content ol,
+#article-content blockquote,
+#article-content details,
+#article-content figure,
+#article-content table {
+	line-height: 1.6;
+	margin-top: 0;
+	margin-bottom: 16px;
+}
+#article-content figure.highlight > table {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 #article-content pre.line-numbers {
 	margin: 20px 0 15px;
 	border-radius: 5px;
-	padding: 35px 15px 20px 55px;
+	padding: 45px 15px 15px 55px;
 }
 #article-content .line-numbers .line-numbers-rows {
-	top: 35px;
+	top: 45px;
 	left: -7px;
 }
 #article-content > pre:not(.line-numbers):has(code:not(.highlight, .hljs)) {
@@ -349,18 +363,24 @@ ul li a {
 	border-radius: 5px;
 	padding: 35px 15px 20px 15px;
 }
+#article-content > pre:not(.line-numbers):has(code:not(.highlight, .hljs)):has(.token) {
+	margin: 20px 0 15px;
+	border-radius: 5px;
+	padding: 35px 15px 10px 15px;
+}
 #article-content > pre:has(.hljs) {
 	position: relative;
 }
 #article-content > pre > code.hljs {
-	margin: 20px 0 15px;
+	margin: 16px 0 15px;
 	border-radius: 5px;
-	padding: 35px 15px 20px 15px;
+	padding: 45px 15px 30px 15px;
 }
 #article-content pre code:not(.highlight, .hljs) {
 	display: inline-block;
 	width: 100%;
 	overflow-x: scroll;
+	line-height: 1.6;
 }
 #article-content > pre:has(code) code:has(.highlight) {
 	margin: 20px 0 15px;
@@ -368,8 +388,7 @@ ul li a {
 	position: relative;
 	border-radius: 5px;
 }
-#article-content > .code-toolbar > pre.line-numbers::before,
-#article-content > pre:has(code:not(.highlight, .hljs)) > code::before,
+#article-content > pre:has(code:not(.highlight, .hljs)):not(.line-numbers) > code::before,
 #article-content > pre:has(code) > .highlight::before,
 #article-content > pre:has(code) > .hljs::before {
 	background: #fc625d;
@@ -381,30 +400,6 @@ ul li a {
 	margin-top: -25px;
 	position: absolute;
 	width: 12px;
-}
-#article-content > pre.line-numbers > code {
-	position: unset;
-}
-#article-content p {
-	line-height: 32px;
-}
-#article-content figure.highlight.hljs:has(.code),
-#article-content figure.highlight:has(.code):not(.hljs) {
-	border-radius: 5px;
-	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
-	padding: 38px 0 15px 0;
-	position: relative;
-	margin: 20px 0 15px;
-	table-layout: fixed;
-	width: 100%;
-	overflow: auto;
-}
-#article-content figure.highlight.hljs:has(.code) {
-	padding: 38px 0 5px 0;
-}
-#article-content figure.highlight.hljs:has(.code) table:has(.keyword, .title, .function, .string),
-#article-content figure.highlight:not(.hljs) table:has(.code) {
-	margin-top: 20px;
 }
 #article-content figure.highlight:has(.code)::before {
 	background: #fc625d;
@@ -418,8 +413,59 @@ ul li a {
 	width: 12px;
 	display: block;
 }
+#article-content > pre > code.hljs::before {
+	background: #fc625d;
+	border-radius: 50%;
+	box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+	content: " ";
+	height: 12px;
+	left: 12px;
+	margin-top: -33px;
+	position: absolute;
+	width: 12px;
+}
+#article-content > pre:has(code:not(.highlight, .hljs)).line-numbers > code::before {
+	background: #fc625d;
+	border-radius: 50%;
+	box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+	content: " ";
+	height: 12px;
+	left: 12px;
+	margin-top: -35px;
+	position: absolute;
+	width: 12px;
+}
+
+#article-content > pre > code.hljs {
+	line-height: 1.6;
+}
+#article-content > pre.line-numbers > code {
+	position: unset;
+}
+#article-content figure.highlight.hljs:has(.code),
+#article-content figure.highlight:has(.code):not(.hljs) {
+	border-radius: 5px;
+	box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+	padding: 38px 0 15px 0;
+	position: relative;
+	table-layout: fixed;
+	width: 100%;
+	overflow: auto;
+}
+#article-content figure.highlight.hljs:has(.code) {
+	padding: 38px 0 5px 0;
+}
+#article-content figure.highlight.hljs:has(.code) table:has(.keyword, .title, .function, .string) {
+	margin-top: 20px;
+}
+
+#article-content figure.highlight:not(.hljs) table:has(.code) {
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
 #article-content figure.highlight:has(.code) table {
 	border-collapse: collapse;
+	margin-top: 10px;
 }
 #article-content pre.line-numbers > code {
 	position: unset;
@@ -428,6 +474,7 @@ ul li a {
 	margin-bottom: 20px;
 }
 #article-content figure.highlight table:has(.gutter.highlight) {
+	margin-top: 20px;
 	margin-bottom: 10px;
 }
 #article-content figure.highlight td.gutter pre {
@@ -438,6 +485,10 @@ ul li a {
 }
 #article-content figure.highlight .code pre {
 	padding: 0 10px;
+	box-sizing: border-box;
+}
+#article-content figure.highlight:has(td.gutter) .code pre:has(code.hljs) {
+	padding: 0;
 	box-sizing: border-box;
 }
 #article-content figure.highlight .gutter {
