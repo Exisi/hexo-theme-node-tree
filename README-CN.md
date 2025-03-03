@@ -66,7 +66,7 @@ header:
   # 是否启用分类菜单
   category:
     enable: true
-  # 是否启用标签菜单
+  # 是否启用 Github 菜单
   github:
     enable: true
     url: ''
