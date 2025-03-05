@@ -102,7 +102,7 @@ code:
       style: "tokyo-night-dark"
     prismcss:
       # 在链接中挑选样式填入
-      # 主题样式: https://prismjs.com/
+      # 主题样式: https://github.com/PrismJS/prism-themes?#available-themes
       style: "prism"
   # 代码复制按钮
   copyBtn:

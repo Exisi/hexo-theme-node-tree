@@ -101,7 +101,7 @@ code:
       style: "tokyo-night-dark"
     prismcss:
       # Select a style in the link
-      # See: https://prismjs.com/
+      # See: https://github.com/PrismJS/prism-themes?#available-themes
       style: "prism"
   # Code copy button
   copyBtn:
