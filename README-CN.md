@@ -124,11 +124,11 @@ post:
     author:
       enable: true
     # 显示发布日期
-    post_date:
+    postDate:
       enable: true
       format: "LL"
     # 显示更新日期
-    update_date:
+    updateDate:
       enable: false
       format: "LL"
 

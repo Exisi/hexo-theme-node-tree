@@ -22,16 +22,16 @@
 						</div>
 					</div>
 				<% } %>
-				<% if (theme.post.copyright.post_date.enable && page.date) { %>
+				<% if (theme.post.copyright.postDate.enable && page.date) { %>
 					<div class="license-meta-item license-meta-date">
 					<div><%- __('post.copyright.posted') %></div>
-					<div><%= full_date(page.date, theme.post.copyright.post_date.format || 'LL') %></div>
+					<div><%= full_date(page.date, theme.post.copyright.postDate.format || 'LL') %></div>
 					</div>
 				<% } %>
-				<% if (theme.post.copyright.update_date.enable && page.updated) { %>
+				<% if (theme.post.copyright.updateDate.enable && page.updated) { %>
 					<div class="license-meta-item license-meta-date">
 					<div><%- __('post.copyright.updated') %></div>
-					<div><%= full_date(page.updated, theme.post.copyright.update_date.format || 'LL') %></div>
+					<div><%= full_date(page.updated, theme.post.copyright.updateDate.format || 'LL') %></div>
 					</div>
 				<% } %>
 				<%

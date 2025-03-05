@@ -106,12 +106,12 @@ post:
       enable: true
     # 显示发布日期
     # Show post date
-    post_date:
+    postDate:
       enable: true
       format: "LL"
     # 显示更新日期
     # Show update date
-    update_date:
+    updateDate:
       enable: false
       format: "LL"
 

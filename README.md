@@ -123,11 +123,11 @@ post:
     author:
       enable: true
     # Show post date
-    post_date:
+    postDate:
       enable: true
       format: "LL"
     # Show update date
-    update_date:
+    updateDate:
       enable: false
       format: "LL"
 
