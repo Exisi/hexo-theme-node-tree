@@ -308,6 +308,8 @@ function activeArticleToc() {
 				top: target.offsetTop,
 				behavior: "smooth",
 			});
+
+			setTimeout(() => (location.hash = decodedHash), 500);
 		});
 	});
 
@@ -514,6 +516,11 @@ function pureFetchLoading(url) {
 			const parser = new DOMParser();
 			const doc = parser.parseFromString(html, "text/html");
 			const newContent = doc.querySelector("#content");
+
+			if (!newContent) {
+				return (location.href = "/404");
+			}
+
 			const pageContent = document.querySelector("#content");
 			pageContent.innerHTML = newContent.innerHTML;
 			document.title = doc.title;
@@ -596,7 +603,10 @@ function setupNavigation() {
 		}
 	});
 
-	window.addEventListener("popstate", function () {
+	window.addEventListener("popstate", function (event) {
+		if (event.state === null) {
+			return;
+		}
 		pureFetchLoading();
 	});
 }
