@@ -180,7 +180,7 @@ a.active {
 	white-space: nowrap;
 }
 
-#sidebar ul li a {
+#sidebar ul li a:not(.active) {
 	color: #454545;
 	font-size: 14px;
 }
