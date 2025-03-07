@@ -1,0 +1,3 @@
+[submodule "themes/node-tree"]
+    path = themes/node-tree
+    url = https://github.com/Exisi/hexo-theme-node-tree.git
