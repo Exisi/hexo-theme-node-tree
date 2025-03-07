@@ -329,6 +329,11 @@ a.active {
 	margin-top: 0;
 	margin-bottom: 16px;
 }
+#article-content blockquote {
+	padding: 0 1em;
+	color: #6a737d;
+	border-left: 0.25em solid #dfe2e5;
+}
 #article-content > table {
 	border-collapse: collapse;
 	border: 1px solid #ddd;
