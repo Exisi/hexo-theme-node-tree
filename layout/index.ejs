@@ -1,12 +1,18 @@
 <div id="index">
-	<% page.posts.each(function(post){ %>
+	<% page.posts.each(function(post){
+		function removeSpecificTags(html) {
+			const tdGutterRegex = /<td[^>]*class=["'][^"']*gutter[^"']*["'][^>]*>.*?<\/td>/gs;
+			html = html.replace(tdGutterRegex, '');
+			return html;
+		}
+	%>
 	<div class="index-li">
 		<a href="<%- url_for(post.path) %>">
 			<h2 class="index-title">
 				<%- post.title || post.slug.split("/")[post.slug.split("/").length-1] %>
 			</h2>
 			<div class="index-brief">
-				<%- strip_html(post.more).substring(0, 200) %> ...
+				<%- strip_html(removeSpecificTags(post.more)).substring(0, 200) %> ...
 			</div>
 		</a>
 		<div class="article-meta">
