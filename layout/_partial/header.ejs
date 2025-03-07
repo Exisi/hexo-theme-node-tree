@@ -7,17 +7,17 @@
 	<ul id="menu">
 		<% if (theme.header.about.enable){ %>
 			<li class="menu-item">
-				<a href="/about" class="menu-item-link"><%= __("about.title") %></a>
+				<a href="<%= url_for('/about') %>" class="menu-item-link"><%= __("about.title") %></a>
 			</li>
 		<% } %>
 		<% if (theme.header.tag.enable){ %>
 			<li class="menu-item">
-				<a href="/tags" class="menu-item-link"><%= __("tag.title") %></a>
+				<a href="<%= url_for('/tags') %>" class="menu-item-link"><%= __("tag.title") %></a>
 			</li>
 		<% } %>
 		<% if (theme.header.category.enable){ %>
 			<li class="menu-item">
-				<a href="/categories" class="menu-item-link"><%= __("category.title") %></a>
+				<a href="<%= url_for('/categories') %>" class="menu-item-link"><%= __("category.title") %></a>
 			</li>
 		<% } %>
 		<% if (theme.header.github.enable){ %>
