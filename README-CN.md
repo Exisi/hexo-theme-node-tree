@@ -184,7 +184,7 @@ comment:
 #------------------------------------------------------
 analytics:
   # 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串
-  # 相关配置: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
+  # 相关配置: https://tongji.baidu.com/
   baidu:
     enable: false
     hm: ''

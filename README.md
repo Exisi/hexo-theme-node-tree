@@ -183,7 +183,7 @@ comment:
 #------------------------------------------------------
 analytics:
   # Baidu analytics, get the string behind `hm.js?`
-  # See: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
+  # See: https://tongji.baidu.com/
   baidu:
     enable: false
     hm: ''
