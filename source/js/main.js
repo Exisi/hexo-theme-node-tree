@@ -239,7 +239,9 @@ function activeArticleToc() {
 		tocNode.classList.remove("active-toc");
 	});
 
-	const activeLi = document.querySelector("#tree li.file.active");
+	const activeLi = document.querySelector(
+		"#tree li.file.active, #tree li.directory .directory.active"
+	);
 
 	if (!activeLi) {
 		return;
