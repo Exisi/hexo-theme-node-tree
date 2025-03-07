@@ -594,7 +594,9 @@ function setupNavigation() {
 		const target = e.target.closest("a");
 		if (
 			target &&
-			target.matches("#menu a, #index a, #tree li.file > a[href], #tree li.directory > a[href]")
+			target.matches(
+				"#menu a, #index a, #tree li.file > a[href], #tree li.directory > a[href], .post-guide a"
+			)
 		) {
 			e.preventDefault();
 			const url = target.href;
