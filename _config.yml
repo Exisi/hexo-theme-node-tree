@@ -1,163 +1,104 @@
-# ------------------------------------------------------
-# 配置指南: https://github.com/Exisi/hexo-theme-node-tree
-# 你可以从指南中获得更详细的说明
-#
-# Guide: https://github.com/Exisi/hexo-theme-node-tree
-# You can get more detailed help from the guide
-#------------------------------------------------------
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
 
-#---------------------------
-# 主题配置
-# Theme Configuration
-#---------------------------
+# Site
+title: Node Tree Demo
+subtitle: 'A hexo theme demo'
+description: 'A hexo theme demo'
+keywords: hexo theme
+author: John Doe
+language: zh-CN
+timezone: 'GMT'
 
-#------------------------------------------------------
-# 用于浏览器标签的图标
-# Icon for browser tab
-#------------------------------------------------------
-favicon:
-  light: /favicon-white.ico
-  dark: /favicon.ico
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: http://example.com
+permalink: /:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
-#------------------------------------------------------
-# 标题菜单配置
-# Header menu Settings
-#------------------------------------------------------
-header:
-  # 是否启用标签菜单
-  # Enable tag menu
-  tag:
-    enable: true
-  # 是否启用分类菜单
-  # Enable category menu
-  category:
-    enable: true
-  # 是否启用标签菜单
-  # Enable github menu
-  github:
-    enable: true
-    url: ''
-  # 是否启用关于菜单
-  # Enable about menu
-  about:
-    enable: true
-  # 是否启用黑暗模式
-  # Enable dark model menu
-  darkMode:
-    enable: true
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
 
-#------------------------------------------------------
-# 侧边栏配置
-# sidebar Settings
-#------------------------------------------------------
-sidebar:
-  # 文章标题使用标题或文件名，如果未定义，默认为 false（使用文件名）
-  # Post title use title or filename, If not defined, default is false (filename).
-  usePostTitle: false
-  search:
-    # 如果未定义，默认为 google。设置引擎为
-    # If not defined, default is google. Set engines as
-    # https://www.baidu.com/s?wd=
-    # https://www.google.com/search?q=
-    engine: https://www.google.com/search?q=
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  preprocess: true
+  line_number: true
+  tab_replace: ''
 
-#------------------------------------------------------
-# 是否启用文章版权
-# Enable the post copyright
-#------------------------------------------------------
-post:
-  # 版权声明，会显示在每篇文章的结尾
-  # Copyright, will be displayed at the end of each post
-  copyright:
-    enable: true
-    # 知识共享许可协议
-    # CreativeCommons license
-    # See: https://creativecommons.org/share-your-work/cclicenses/
-    # Options: BY | BY-SA | BY-ND | BY-NC | BY-NC-SA | BY-NC-ND | ZERO
-    license: 'BY'
-    # 显示作者
-    # Show author
-    author:
-      enable: true
-    # 显示发布日期
-    # Show post date
-    post_date:
-      enable: true
-      format: "LL"
-    # 显示更新日期
-    # Show update date
-    update_date:
-      enable: false
-      format: "LL"
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
 
-#------------------------------------------------------
-# 页脚配置
-# Footer Settings
-#------------------------------------------------------
-footer:
-  # 页脚第二行文字的 HTML，建议保留链接，用于向更多人推广本主题
-  # HTML of the first line of the footer, it is recommended to keep the link to promote this theme to more people
-  content: '
-    <div>
-      Theme
-      <a href="https://github.com/Exisi/hexo-theme-node-tree"	target="_blank">Node-Tree</a>
-      Powered by
-      <a href="https://hexo.io" target="_blank">Hexo</a>
-    </div>
-  '
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
 
-  # 版权声明，会显示在每个界面的结尾
-  # Copyright, will be displayed at the end of each page
-  copyright:
-    enable: true
-    url: ''
-    baseYear: 2024
-  # 展示网站的 PV、UV 统计数
-  # Display website PV and UV statistics
-  statistics:
-    # Vercount 是一个基于 NextJS 和 Redis 的高效网站计数器。支持自部署
-    # Vercount is an efficient website counter based on NextJS and Redis. Support self-deployment
-    # see: https://vercount.one/
-    vercount:
-      enable: true
-      src: https://cn.vercount.one/js
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
 
-#------------------------------------------------------
-# 文章评论，支持 giscus
-# Post comment, support giscus
-# see: https://giscus.app/
-#------------------------------------------------------
-comment:
-  # 基于 GitHub Discussions
-  # Based on GitHub Discussions, similar to Utterances
-  # See: https://giscus.app/
-  giscus:
-    enable: false
-    repo:
-    repo_id:
-    category:
-    category_id:
-    mapping:
-    strict:
-    reactions_enabled:
-    emit_metadata:
-    input_position:
-    theme:
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
 
-#------------------------------------------------------
-# 是否启用网站分析，支持谷歌和百度分析
-# Enable Website Analytics, Supporting Google and Baidu Analytics
-#------------------------------------------------------
-analytics:
-  # 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串
-  # Baidu analytics, get the string behind `hm.js?`
-  # See: https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376
-  baidu:
-    enable: false
-    hm: ''
-  # Google Analytics 4 的媒体资源 ID
-  # Google Analytics 4 MEASUREMENT_ID
-  # See: https://support.google.com/analytics/answer/9744165#zippy=%2Cin-this-article
-  google:
-    enable: false
-    id: ''
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: node-tree
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: ''
