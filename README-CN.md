@@ -4,7 +4,7 @@
 
 <p>节点树是一个简单的节点树目录主题，专注于笔记记录</p>
 
-Demo: [MagicBook](https://m.exi.ink)
+Demo: [Node Tree Demo](https://exisi.github.io/hexo-theme-node-tree/zh-CN/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/)
 
 Docs: [English](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README.md) | 中文
 
