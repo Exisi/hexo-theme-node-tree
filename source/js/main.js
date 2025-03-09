@@ -258,10 +258,12 @@ function activeArticleToc() {
 	const stack = [];
 	labelNodeList.forEach((label) => {
 		const level = parseInt(label.tagName.slice(1), 10);
-		const title = label.id;
+		const id = label.id;
+		const title = label.querySelector("a").getAttribute("title");
 
 		const tocItem = {
 			level,
+			id,
 			title,
 			children: [],
 		};
@@ -282,7 +284,7 @@ function activeArticleToc() {
 		tocJson.forEach((item) => {
 			const li = document.createElement("li");
 			const a = document.createElement("a");
-			a.href = `#${item.title}`;
+			a.href = `#${item.id}`;
 			a.textContent = item.title;
 			li.appendChild(a);
 
