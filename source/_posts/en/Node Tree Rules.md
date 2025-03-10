@@ -2,9 +2,9 @@
 categories:
   - en
 tags:
-  - guide
+  - Guide
 date:
-  - 2025-02-15 14:30:14
+  - 2025-02-16 14:30:14
 ---
 
 The sidebar article directory on the left side of the interface will default to indexing all articles and file structure under source_posts, and then generate the article tree node.

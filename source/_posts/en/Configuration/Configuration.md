@@ -2,9 +2,9 @@
 categories:
   - en
 tags:
-  - guide
+  - Configuration
 date:
-  - 2025-02-15 16:23:34
+  - 2025-02-17 16:23:34
 ---
 
 The Node Tree theme uses the `_config.yml` configuration file located under `theme/node-tree` by default.
