@@ -42,7 +42,7 @@ By default, the theme is default configuration for some configurations. If you n
 
 #### Theme configuration
 
-Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration.
+Create the `_config.node-tree.yml` file in Hexo root directory, and copy the follow configuration. For detailed configuration, please refer to the [document](https://exisi.github.io/hexo-theme-node-tree/en/Quick%20Start/).
 
 ```
 #---------------------------

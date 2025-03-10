@@ -42,7 +42,7 @@ $ git pull
 
 #### 主题配置
 
-然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。
+然后在 Hexo 根目录中创建 `_config.node-tree.yml` 文件，然后复制以下配置。详细配置请参考[文档](https://exisi.github.io/hexo-theme-node-tree/zh-CN/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/)。
 
 ```
 #---------------------------
