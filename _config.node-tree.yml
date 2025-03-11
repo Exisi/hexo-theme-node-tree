@@ -34,7 +34,7 @@ custom:
     base:
       # 是否异步加载
       # Whether to load async
-      async: true
+      async: false
       # js文件路径列表
       # List of js file
       path:
