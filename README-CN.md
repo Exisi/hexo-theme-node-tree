@@ -67,7 +67,7 @@ custom:
     # 只在初次页面加载的脚本
     base:
       # 是否异步加载
-      async: true
+      async: false
       # js文件路径列表
       path:
     # 页面更新时将会重新加载的脚本

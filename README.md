@@ -67,7 +67,7 @@ custom:
     # The script that will be loaded only once when the page is loaded.
     base:
       # Whether to load async
-      async: true
+      async: false
       # List of js file
       path:
     # The script that will be reloaded when the page is change.
