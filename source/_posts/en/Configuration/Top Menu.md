@@ -4,7 +4,7 @@ categories:
 tags:
   - Configuration
 date:
-  - 2025-02-17 16:23:34
+  - 2025-02-17 21:23:34
 ---
 
 The top menu allows you to control the display of the menu as needed. By default, all menus are enabled.

@@ -4,7 +4,7 @@ categories:
 tags:
   - Configuration
 date:
-  - 2025-02-17 20:23:34
+  - 2025-02-17 23:23:34
 ---
 
 The sidebar configuration is mainly used to control the title generation of the tree nodes and the search function.

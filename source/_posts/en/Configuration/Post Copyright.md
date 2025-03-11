@@ -4,7 +4,7 @@ categories:
 tags:
   - Configuration
 date:
-  - 2025-02-17 23:36:03
+  - 2025-02-18 2:00:03
 ---
 
 You can modify the copyright settings of the article to change the default display of the copyright. By default, `post.copyright.enable` is `true`, and the article copyright is located at the bottom of each article.

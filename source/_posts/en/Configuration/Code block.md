@@ -4,7 +4,7 @@ categories:
 tags:
   - Configuration
 date:
-  - 2025-02-17 22:23:34
+  - 2025-02-18 0:23:34
 ---
 
 Through the code block configuration, you can specify the extended features of code blocks. Since Hexo's code rendering is not perfect, we have made compatibility and optimization based on the code highlighting configuration in Hexo's `_config.yml` file.

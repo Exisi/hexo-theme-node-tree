@@ -27,6 +27,27 @@ favicon:
   dark: /favicon.ico
 
 #------------------------------------------------------
+# Custom CSS and JS
+#------------------------------------------------------
+custom:
+  css:
+    # List of css file
+    path:
+  js:
+    # The script that will be loaded only once when the page is loaded.
+    base:
+      # Whether to load async
+      async: false
+      # List of js file
+      path:
+    # The script that will be reloaded when the page is change.
+    reload:
+      # Whether to load async
+      async: true
+      # List of js file
+      path:
+
+#------------------------------------------------------
 # Header menu Settings
 #------------------------------------------------------
 header:
