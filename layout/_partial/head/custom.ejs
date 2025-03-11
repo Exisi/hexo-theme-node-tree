@@ -1,0 +1,23 @@
+<% if (theme.custom.css.path) { %>
+  <%- css(theme.custom.css.path) %>
+<% } %>
+
+<% if (theme.custom.js.base.path) { %>
+  <% if (Array.isArray(theme.custom.js.base.path)) { %>
+    <% theme.custom.js.base.path.forEach(path => { %>
+      <script src="<%= url_for(path) %>" <%= theme.custom.js.base.async ? 'async' : '' %>></script>
+    <% }); %>
+  <% } else { %>
+    <script src="<%= url_for(theme.custom.js.base.path) %>"></script>
+  <% } %>
+<% } %>
+
+<% if (theme.custom.js.reload.path) { %>
+  <% if (Array.isArray(theme.custom.js.reload.path)) { %>
+    <% theme.custom.js.reload.path.forEach(path => { %>
+      <script src="<%= url_for(path) %>" reload <%= theme.custom.js.reload.async ? 'async' : '' %>></script>
+    <% }); %>
+  <% } else { %>
+    <script src="<%= url_for(theme.custom.js.reload.path) %>" reload></script>
+  <% } %>
+<% } %>

@@ -20,6 +20,35 @@ favicon:
   dark: /favicon.ico
 
 #------------------------------------------------------
+# 自定义 CSS 和 JS
+# Custom CSS and JS
+#------------------------------------------------------
+custom:
+  css:
+    # css 文件路径列表
+    # List of css file
+    path:
+  js:
+    # 只在初次页面加载的脚本
+    # The script that will be loaded only once when the page is loaded.
+    base:
+      # 是否异步加载
+      # Whether to load async
+      async: true
+      # js文件路径列表
+      # List of js file
+      path:
+    # 页面更新时将会重新加载的脚本
+    # The script that will be reloaded when the page is change.
+    reload:
+      # 是否异步加载
+      # Whether to load async
+      async: true
+      # js文件路径列表
+      # List of js file
+      path:
+
+#------------------------------------------------------
 # 标题菜单配置
 # Header menu Settings
 #------------------------------------------------------
