@@ -561,7 +561,7 @@ function pureFetchLoading(url) {
 
 				if (!treeNodes.length) {
 					const treeNode = document.querySelector(`#tree li.directory a[title='${title}']`);
-					treeNode.classList.add("active");
+					treeNode?.classList.add("active");
 				}
 				activeArticleToc();
 			}
