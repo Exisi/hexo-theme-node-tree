@@ -186,17 +186,17 @@ comment:
   # Based on GitHub Discussions, similar to Utterances
   # See: https://giscus.app/
   giscus:
-    enable: false
-    repo:
-    repo_id:
-    category:
-    category_id:
-    mapping:
-    strict:
-    reactions_enabled:
-    emit_metadata:
-    input_position:
-    theme:
+    enable: true
+    repo: exisi/hexo-theme-node-tree
+    repo_id: R_kgDOMEnRIg
+    category: General
+    category_id: DIC_kwDOMEnRIs4Cn5vY
+    mapping: title
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: top
+    theme: light
 
 #------------------------------------------------------
 # 是否启用网站分析，支持谷歌和百度分析
