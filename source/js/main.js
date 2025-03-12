@@ -198,6 +198,8 @@ function treeNodeDirClickEvent() {
 		if (e.target.matches("#tree li.file > a, #tree li.directory > a")) {
 			e.preventDefault();
 			toggleActiveNodeTree(e.target);
+			const toggleAllNodeBtns = document.querySelectorAll("#tree .fa-caret-up");
+			toggleAllNodeBtns.forEach((btn) => btn.classList.replace("fa-caret-up", "fa-caret-down"));
 		}
 	});
 }
@@ -402,25 +404,26 @@ function toggleTreeNodes() {
 		treeUl.prepend(beforeEl);
 
 		beforeEl.addEventListener("click", () => {
-			const branches = treeUl.querySelectorAll("a.directory i");
-
-			if (this.classList.contains("fa-caret-down")) {
-				this.classList.replace("fa-caret-down", "fa-caret-up");
+			const branches = treeUl.querySelectorAll("li.directory .fa");
+			if (beforeEl.classList.contains("fa-caret-down")) {
+				beforeEl.classList.replace("fa-caret-down", "fa-caret-up");
 
 				Array.from(branches).forEach((branch) => {
 					if (!branch.classList.contains("fa-minus-square-o")) {
-						branch.click();
+						const targetNode = branch.closest("li.directory");
+						toggleActiveNodeTree(targetNode);
 					}
 				});
 				return;
 			}
 
-			this.classList.remove("fa-caret-up");
-			this.classList.add("fa-caret-down");
+			beforeEl.classList.remove("fa-caret-up");
+			beforeEl.classList.add("fa-caret-down");
 
 			branches.forEach((branch) => {
 				if (!branch.classList.contains("fa-plus-square-o")) {
-					branch.click();
+					const targetNode = branch.closest("li.directory");
+					toggleActiveNodeTree(targetNode);
 				}
 			});
 		});
