@@ -451,6 +451,17 @@ table tr:nth-child(2n) {
 	position: absolute;
 	width: 12px;
 }
+#article-content pre .caption,
+#article-content figure.highlight figcaption {
+	left: 50%;
+	transform: translate(-50%, 0%);
+	position: absolute;
+	top: 5px;
+	font-size: 14px;
+	color: #939dac;
+	display: flex;
+	gap: 10px;
+}
 #article-content > pre:has(code:not(.highlight, .hljs)):not(.line-numbers) > code::before,
 #article-content > pre > code.hljs::before {
 	background: #fc625d;
@@ -474,7 +485,6 @@ table tr:nth-child(2n) {
 	position: absolute;
 	width: 12px;
 }
-
 #article-content > pre > code.hljs {
 	line-height: 1.6;
 }
