@@ -329,6 +329,35 @@ a.active {
 	margin-top: 0;
 	margin-bottom: 16px;
 }
+#article-content hr {
+	width: 100%;
+	display: inline-block;
+	margin: 16px 0;
+	border-top: 1px solid #dddddd;
+}
+#article-content > ul > li:has(input[type="checkbox"]) {
+	margin-left: -40px;
+}
+#article-content > ul > li:has(ul input[type="checkbox"][disabled]) {
+	margin-left: 0;
+}
+#article-content > ul > li:has(input[type="checkbox"][disabled])::marker {
+	content: none;
+}
+#article-content > ul > li:has(ul input[type="checkbox"][disabled])::marker {
+	content: initial;
+}
+#article-content dl dt {
+	padding: 0;
+	margin-top: 16px;
+	font-size: 1em;
+	font-style: italic;
+	font-weight: 600;
+}
+#article-content dl dd {
+	padding: 0 16px;
+	margin-bottom: 16px;
+}
 #article-content blockquote {
 	padding: 0 1em;
 	color: #6a737d;
