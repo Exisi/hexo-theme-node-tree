@@ -12,6 +12,9 @@ Docs: [English](https://github.com/Exisi/hexo-theme-node-tree/blob/main/README.m
 
 基于 [tree](https://github.com/wujun234/hexo-theme-tree) 主题.
 
+### 预览
+![preview](https://github.com/Exisi/hexo-theme-node-tree/blob/preview/doc/preview-zh-CN.png?raw=true)
+
 ### 安装
 
 ```
