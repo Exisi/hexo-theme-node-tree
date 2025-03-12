@@ -42,7 +42,7 @@ git clone https://github.com/Exisi/hexo-theme-node-tree themes/node-tree
 
 Next, update the global configuration file of Hexo, which is `_config.yml`, and set the theme to `node-tree`.
 
-``` yaml
+``` yaml _config.yml
 theme: node-tree
 ```
 

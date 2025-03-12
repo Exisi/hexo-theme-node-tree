@@ -17,7 +17,7 @@ After the creation is successful, modify `/source/categories/index.md` and add t
 
 The modified file example is as follows:
 
-```
+``` Text index.md
 ---
 title: Category
 layout: categories

@@ -9,7 +9,7 @@ date:
 
 To make the light-colored transparent icons adapt to the dark background of the header section, we divided the theme icons into browser icon (favicon.dark) and header icon (favicon.light).
 
-``` yml
+``` yml _config.node-tree.yml
 favicon:
   light: /favicon-white.ico
   dark: /favicon.ico
@@ -19,7 +19,7 @@ By default, the icon file is located at the root path `/themes/node-tree/source`
 
 Of course, if your icons have good recognition, you can set the `favicon.dark` and `favicon.light` icons to be the same icon.
 
-``` yml
+``` yml _config.node-tree.yml
 favicon:
   light: /favicon.ico
   dark: /favicon.ico

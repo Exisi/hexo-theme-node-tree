@@ -9,7 +9,7 @@ date:
 
 The `Node Tree` currently only supports the `giscus` comment system, and this feature is disabled by default. If you need to enable this feature, you can refer to the [giscus](https://giscus.app) configuration.
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Post comment, support giscus
 # see: https://giscus.app/

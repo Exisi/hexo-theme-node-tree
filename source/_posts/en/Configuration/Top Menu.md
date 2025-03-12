@@ -9,7 +9,7 @@ date:
 
 The top menu allows you to control the display of the menu as needed. By default, all menus are enabled.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   # Enable tag menu
   tag:
@@ -32,7 +32,7 @@ header:
 ## Tag page Menu
 The entry for the tag page, set to `enable: true` by default.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   tag:
     enable: true
@@ -41,7 +41,7 @@ header:
 ## Category page Menu
 The entry for the category page, set to `enable: true` by default.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   category:
     enable: true
@@ -50,7 +50,7 @@ header:
 ## Github icon menu
 The entry for the Github page, which will redirect to the configured `header.github.url`, with the default being `enable: true`. If menu item enabled, please fill in the link to your GitHub homepage, for example `https://github.com/yourname`.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   github:
     enable: true
@@ -60,7 +60,7 @@ header:
 ## About page menu
 The entry for the about page, the default is `enable: true`.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   about:
     enable: true
@@ -69,7 +69,7 @@ header:
 ## Dark mode icon menu
 Icon menu for toggling between dark and light mode page themes, with the default set to `enable: true`.
 
-``` yml
+``` yml _config.node-tree.yml
 header:
   darkMode:
     enable: true

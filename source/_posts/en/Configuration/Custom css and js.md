@@ -11,7 +11,7 @@ You can create your custom CSS or JS files in the `source` folder in the root di
 
 >To ensure that you can update the theme normally, we do not recommend creating custom CSS or JS files under the `source` file in the theme directory, as these may be lost when the theme is synchronized.
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Custom CSS and JS
 #------------------------------------------------------
@@ -39,7 +39,7 @@ You can write multiple style files and then import them by `custom.css.path`.
 
 If you only need to introduce a single style file, you can directly specify a path for `custom.css.path`
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   css:
     path: /css/custom.css
@@ -47,7 +47,7 @@ custom:
 
 If you have multiple style files, configure them as follows:
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   css:
     path:
@@ -68,7 +68,7 @@ Basic scripts have no restrictions, but you can control whether the script loads
 
 If you only need to introduce a single basic script file, you can directly specify a path for `custom.js.base.path`.
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   js:
     base:
@@ -78,7 +78,7 @@ custom:
 
 If you have multiple base scripts, configure them as follows:
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   js:
     base:
@@ -95,7 +95,7 @@ Meanwhile, you can also control whether the script is loaded asynchronously. Thi
 
 If you only need to introduce a single reload script, you can specify the file path directly in `custom.js.reload.path`.
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   js:
     reload:
@@ -106,7 +106,7 @@ custom:
 
 If you have multiple reload scripts, configure them as follows:
 
-``` yml
+``` yml _config.node-tree.yml
 custom:
   js:
     reload:

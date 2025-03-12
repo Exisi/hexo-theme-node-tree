@@ -9,7 +9,7 @@ date:
 
 You can modify the copyright settings of the article to change the default display of the copyright. By default, `post.copyright.enable` is `true`, and the article copyright is located at the bottom of each article.
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Enable the post copyright
 #------------------------------------------------------
@@ -52,7 +52,7 @@ You can fill in the `post.copyright.license` configuration with the Creative Com
 ## Copyright author
 To reduce redundancy in configuration, the author character for article copyrights is taken from the global configuration in `_config.yml` under the `author` setting. If you need to disable the display of the author, you can set `post.copyright.author.enable`.
 
-``` yml
+``` yml _config.node-tree.yml
 post:
   copyright:
     author:
@@ -64,7 +64,7 @@ By default, the copyright date uses the article's publish time, which is the val
 
 Additionally, you can also switch to `post.copyright.update_date.enable` set to `true`. Using the update time can make the displayed date more accurate, but this time is determined by the system based on the modification time of the `markdown` file.
 
-``` yml
+``` yml _config.node-tree.yml
 post:
   copyright:
     postDate:

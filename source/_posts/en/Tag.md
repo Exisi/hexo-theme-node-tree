@@ -17,7 +17,7 @@ After the creation is successful, modify `/source/tags/index.md` and add the lay
 
 The modified file example is as follows:
 
-```
+``` Text index.md
 ---
 title: Tag
 layout: tags

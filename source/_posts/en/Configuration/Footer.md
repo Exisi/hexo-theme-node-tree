@@ -7,7 +7,7 @@ date:
   - 2025-02-18 2:36:03
 ---
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Footer Settings
 #------------------------------------------------------
@@ -40,7 +40,7 @@ footer:
 You can modify the footer.content configuration to change the HTML of the second line of text in the footer. The default display content is a citation for the theme, and if you do not have any special customization needs, you can keep the default setting, which is used to promote the Node Tree theme to more people.
 
 
-``` yml
+``` yml _config.node-tree.yml
 footer:
   content: '
     <div>
@@ -56,7 +56,7 @@ footer:
 The copyright statement is enabled by default, meaning `footer.copyright.enable` is set to true. You can modify the jump link for the copyright author at the bottom of the page by changing the `footer.copyright.url`. Additionally, you can update the `footer.copyright.baseYear` configuration to change the default site start-up running year.
 
 
-``` yml
+``` yml _config.node-tree.yml
 footer:
   copyright:
     enable: true
@@ -69,7 +69,7 @@ If you do not wish to display the copyright statement, you can set `footer.copyr
 ## Website visit statistics
 The theme uses [Vercount](https://vercount.one/) as the interface for visit statistics, and the interface visit statistics feature is enable by default.
 
-``` yml
+``` yml _config.node-tree.yml
 footer:
   statistics:
     vercount:
@@ -80,7 +80,7 @@ footer:
 ### Vercount self-host configuration
 You can refer to the [Vercount Self-Hosted Guide](https://github.com/EvanNotFound/vercount?tab=readme-ov-file#vercount-%E8%87%AA%E6%89%98%E7%AE%A1%E6%8C%87%E5%8D%97) to deploy a private access statistics service.
 
-``` yml
+``` yml _config.node-tree.yml
 footer:
   statistics:
     vercount:

@@ -9,7 +9,7 @@ date:
 
 The sidebar configuration is mainly used to control the title generation of the tree nodes and the search function.
 
-``` yml
+``` yml _config.node-tree.yml
 sidebar:
   # Post title use title or filename, If not defined, default is false (filename).
   usePostTitle: false
@@ -23,14 +23,14 @@ sidebar:
 ## Node title
 The sidebar.usePostTitle controls the source of character generation for each node, and by default, it uses the file names under the source/_post directory to generate. Due to the limitations of file system special characters, this may cause you to be unable to display titles with special characters.
 
-``` yml
+``` yml _config.node-tree.yml
 sidebar:
   usePostTitle: false
 ```
 
 If you need to display a different title than the filename, you can specify that the directory name should be used to generate the article title by setting `sidebar.usePostTitle` to true. Then, the directory will use the title attribute value declared in the markdown file header.
 
-``` yml
+``` yml _config.node-tree.yml
 sidebar:
   usePostTitle: true
 ```
@@ -40,7 +40,7 @@ The search feature currently only implements search based on the character of th
 
 By default, the in-site search feature in the sidebar uses Google search, but you can also use different search engines by specifying the search prefix for `sidebar.search.engine`, for example `https://www.google.com/search?q=`.
 
-``` yml
+``` yml _config.node-tree.yml
 sidebar:
   search:
     engine: https://www.google.com/search?q=

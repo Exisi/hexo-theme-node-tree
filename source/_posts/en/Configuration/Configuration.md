@@ -9,7 +9,7 @@ date:
 
 The Node Tree theme uses the `_config.yml` configuration file located under `theme/node-tree` by default.
 
-``` yml
+``` yml _config.yml
 # ------------------------------------------------------
 # Guide: https://github.com/Exisi/hexo-theme-node-tree
 # You can get more detailed help from the guide

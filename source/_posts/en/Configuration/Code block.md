@@ -9,7 +9,7 @@ date:
 
 Through the code block configuration, you can specify the extended features of code blocks. Since Hexo's code rendering is not perfect, we have made compatibility and optimization based on the code highlighting configuration in Hexo's `_config.yml` file.
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Enhancements to code blocks
 #------------------------------------------------------
@@ -33,7 +33,7 @@ code:
 ## Code highlighting style
 You can specify the style for code rendering by using `code.highlight.highlightcss.style` and `code.highlight.prismcss.style`.
 
-``` yml
+``` yml _config.node-tree.yml
 code:
   highlight:
     highlightcss:
@@ -50,7 +50,7 @@ These two parameters are both used to specify the `CSS` file to be included for 
 ## Code copy button
 You can control the display of the code copy button using the `code.copybtn.enable` property. By default, this feature is enabled and the button is located in the upper right corner of the code block.
 
-``` yml
+``` yml _config.node-tree.yml
 code:
   copyBtn:
     enable: true
@@ -59,7 +59,7 @@ code:
 ## Code highlighting library
 You can switch the code highlighter library in the global configuration `_config.yml` under the Hexo root directory. The `syntax_highlighter` parameter accepts `highlight.js` and `prismjs`.
 
-``` yml
+``` yml _config.yml
 # Hexo > 7.0
 syntax_highlighter: highlight.js
 
@@ -75,7 +75,7 @@ If you need to disable code highlighting styles, you can set `syntax_highlighter
 ## Line numbers display
 When you enable one of the code highlighter libraries, the `highlight.line_number` and `prismjs.line_number` options in the `_config.yml` file under the Hexo root directory will be used. The default setting is `true`, which means line numbers are displayed in the code. If you need to turn off the line number display, simply set the `line_number` option for the corresponding code highlighter library to `false`
 
-``` yml
+``` yml _config.yml
 highlight:
   line_number: true
 prismjs:

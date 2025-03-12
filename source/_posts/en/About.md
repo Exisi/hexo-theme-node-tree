@@ -17,7 +17,7 @@ After the creation is successful, modify `/source/about/index.md` and add the la
 
 The modified file example is as follows:
 
-```
+``` Text index.md
 ---
 title: About
 layout: about

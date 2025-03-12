@@ -9,7 +9,7 @@ date:
 
 By default, the website analysis feature is disabled. If you need to enable the corresponding website analysis feature, please refer to the relevant configuration of the website.
 
-``` yml
+``` yml _config.node-tree.yml
 #------------------------------------------------------
 # Enable Website Analytics, Supporting Google and Baidu Analytics
 #------------------------------------------------------
@@ -29,7 +29,7 @@ analytics:
 ## Baidu Analytics
 You can set the `analytics.baidu.enable` configuration to true to enable Baidu Analytics, and then you need to fill in the `hm` character corresponding to the site into the `analytics.baidu.hm` configuration.
 
-``` yml
+``` yml _config.node-tree.yml
 analytics:
   baidu:
     enable: false
@@ -41,7 +41,7 @@ For related configurations, please refer to the [Baidu Analytics](https://tongji
 ## Google analytics
 You can set the `analytics.google.enable` configuration to true to enable Google Analytics, and then you need to fill in the `id` character corresponding to the site into the `analytics.google.id` configuration.
 
-``` yml
+``` yml _config.node-tree.yml
 analytics:
   google:
     enable: false
