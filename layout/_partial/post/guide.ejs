@@ -1,31 +1,30 @@
 <% if (is_post()){
-	let posts = site.posts;
+	const posts = site.posts;
 
-    let prev,next  = null;
-    let current = page.title || page.slug.split("/")[page.slug.split("/").length-1];
-
-    let data = [];
+    let prev, next  = null;
+    const current = page.slug.split("/")[page.slug.split("/").length-1];
+    let postList = [];
 
     for(let i = 0; i < posts.length; i++) {
-    	post = posts.data[i];
-    	data.push(post);
+    	const post = posts.data[i];
+    	postList.push(post);
     }
 
-    data.sort(function(a, b){
+    postList.sort(function(a, b){
     	let date ={
-    		a:new Date(a.date),
-    		b:new Date(b.date),
+    		a : new Date(a.date),
+    		b : new Date(b.date),
     	}
     	return (date.a - date.b);
     });
 
-    for(let i = 0; i < data.length; i++){
-    	post = data[i];
+    for(let i = 0; i < postList.length; i++){
+    	const post = postList[i];
     	let title = post.slug.split("/")[post.slug.split("/").length-1];
     	if(title == current){
-    		prev = data[i-1];
-    		next = data[i+1];
-    		if (i == data.length-1){
+    		prev = postList[i-1];
+    		next = postList[i+1];
+    		if (i == postList.length-1){
     			next = null;
     		}
     	}
