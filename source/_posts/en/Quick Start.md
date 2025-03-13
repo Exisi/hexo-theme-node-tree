@@ -13,7 +13,7 @@ Welcome to the Node Tree theme! This document will help you get started quickly.
 Node Tree is a Hexo blog theme with a node tree directory, primarily designed for knowledge-base blogs. It allows you to display your note directory and content in a manner similar to knowledge-base applications through a sidebar catalog. Additionally, the theme supports seamless loading of note nodes.
 
 ## Project Initialization
-Before proceeding, ensure you have installed the [Hexo] (https://hexo.io/en/docs/). Execute the following commands to initialize a Hexo project and generate required files in the specified directory:
+Before proceeding, ensure you have installed the [Hexo](https://hexo.io/en/docs/). Execute the following commands to initialize a Hexo project and generate required files in the specified directory:
 
 ``` bash
 hexo init <folder>
