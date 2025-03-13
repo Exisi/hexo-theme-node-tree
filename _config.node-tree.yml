@@ -65,7 +65,7 @@ header:
   # Enable github menu
   github:
     enable: true
-    url: ''
+    url: 'https://github.com/Exisi/hexo-theme-node-tree'
   # 是否启用关于菜单
   # Enable about menu
   about:
