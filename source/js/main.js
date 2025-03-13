@@ -602,7 +602,7 @@ function setupNavigation() {
 		if (
 			target &&
 			target.matches(
-				"#menu a, #index a, #tree li.file > a[href], #tree li.directory > a[href], .post-guide a"
+				"#menu a:not(.item-icon), #index a, #tree li.file > a[href], #tree li.directory > a[href], .post-guide a"
 			)
 		) {
 			e.preventDefault();
