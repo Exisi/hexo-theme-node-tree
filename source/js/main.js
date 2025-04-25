@@ -609,6 +609,10 @@ function setupNavigation() {
 			const url = target.href;
 			history.pushState(null, "", url);
 			pureFetchLoading(url);
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
 		}
 	});
 
@@ -617,6 +621,10 @@ function setupNavigation() {
 			return;
 		}
 		pureFetchLoading();
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
 	});
 }
 
