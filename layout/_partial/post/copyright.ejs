@@ -12,12 +12,12 @@
 				<div class="license-subTitle"><%- subTitle %></div>
 			</div>
 			<div class="license-meta">
-				<% if (theme.post.copyright.author.enable && (page.author || config.author)) { %>
+				<% if (theme.post.copyright.author.enable && config.author) { %>
 					<div class="license-meta-item">
 						<div><%- __("post.copyright.author") %></div>
 						<div>
 							<a href="<%- theme.footer.copyright.url %>">
-								<%- page.author || config.author %>
+								<%- config.author %>
 							</a>
 						</div>
 					</div>
@@ -35,11 +35,7 @@
 					</div>
 				<% } %>
 				<%
-					let license = theme.post.copyright.license || '';
-					if (typeof page.license === 'string') {
-						license = page.license;
-					}
-					license = license.toUpperCase();
+					let license = theme.post.copyright.license;
 				%>
 				<% if (license) { %>
 					<div class="license-meta-item">
