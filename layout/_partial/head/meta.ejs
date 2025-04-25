@@ -1,15 +1,21 @@
-<% if (page.keywords){ %>
-	<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>" />
-<% } %>
+<%
+	function removeSpecificTags(html) {
+		const tdGutterRegex = /<td[^>]*class=["'][^"']*gutter[^"']*["'][^>]*>.*?<\/td>/gs;
+		html = html.replace(tdGutterRegex, '');
+		return html;
+	}
 
-<% if (config.keywords){ %>
-	<meta name="keywords" content="<%= config.keywords %>" />
-<% } %>
+	const tagNames = page.tags?.data?.map(t => t.name).filter(Boolean) || [];
+	const categoryNames = page.categories?.data?.map(c => c.name).filter(Boolean) || [];
+	const keywordNames = page.keywords?.data?.map(k => k.name).filter(Boolean) || [];
+	const configKeywords = config.keywords ? String(config.keywords).split(',').map(s => s.trim()).filter(Boolean) : [];
+	const keywords = [...new Set([...tagNames, ...categoryNames, ...keywordNames, ...configKeywords])].join(',');
 
-<% if (page.description){ %>
-	<meta name="description" content="<%= page.description %>" />
-<% } %>
+	const description = page.more ? strip_html(removeSpecificTags(page.more)).substring(0, 200) : config.description
+%>
 
-<% if (config.description){ %>
-	<meta name="description" content="<%= config.description %>" />
-<% } %>
+<meta name="author" content="<%= config.author %>" />
+
+<meta name="keywords" content="<%= keywords %>" />
+
+<meta name="description" content="<%= description %>" />
